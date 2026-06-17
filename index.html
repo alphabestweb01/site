@@ -1203,41 +1203,56 @@
         }
 
         function renderVideo(data) {
-            const container = document.getElementById('video-container');
-            if (!data || data.length === 0 || !container) return;
-            
-            container.innerHTML = '';
-            data.forEach(video => {
-                const isPremium = video.is_premium === 'true' || video.is_premium === true;
-                const card = document.createElement('div');
-                card.className = 'bg-gray-50 rounded-2xl shadow-lg overflow-hidden' + (isPremium ? ' relative' : '');
-                let premiumBadge = '', lockOverlay = '';
-                if (isPremium) {
-                    premiumBadge = `<div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold z-10">
-                        <i class="fas fa-lock mr-1"></i>PREMIUM</div>`;
-                    lockOverlay = `<div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-                        <i class="fas fa-lock text-white text-3xl"></i></div>`;
-                }
-                card.innerHTML = `
-                    ${premiumBadge}
-                    <div class="relative">
-                        <img src="${video.gambar || 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop'}" 
-                             alt="${video.judul}" class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                            <i class="fas fa-play-circle text-white text-5xl"></i>
-                        </div>
-                        ${lockOverlay}
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-gray-800 mb-2">${video.judul}</h4>
-                        <p class="text-sm ${isPremium ? 'text-teal-600 font-medium' : 'text-gray-600'}">
-                            ${isPremium ? 'Khusus Member' : 'Gratis'}
-                        </p>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+    const container = document.getElementById('video-container');
+    if (!data || data.length === 0 || !container) return;
+    
+    container.innerHTML = '';
+    data.forEach(video => {
+        const isPremium = video.is_premium === 'true' || video.is_premium === true;
+        const linkVideo = video.link_video || '#';
+        const card = document.createElement('div');
+        card.className = 'bg-gray-50 rounded-2xl shadow-lg overflow-hidden' + (isPremium ? ' relative' : '');
+        
+        let premiumBadge = '';
+        let lockOverlay = '';
+        let videoLink = '';
+        
+        // Tombol play yang ngarah ke link video
+        videoLink = `
+            <a href="${linkVideo}" target="_blank" class="absolute inset-0 flex items-center justify-center z-20 group">
+                <div class="w-16 h-16 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/50 transition">
+                    <i class="fas fa-play text-white text-2xl ml-1"></i>
+                </div>
+            </a>
+        `;
+        
+        if (isPremium) {
+            premiumBadge = `<div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold z-10">
+                <i class="fas fa-lock mr-1"></i>PREMIUM</div>`;
+            lockOverlay = `<div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"></div>`;
+        } else {
+            // Untuk video gratis, tambahkan overlay gelap tipis biar play button keliatan
+            lockOverlay = `<div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"></div>`;
         }
+        
+        card.innerHTML = `
+            ${premiumBadge}
+            <div class="relative">
+                <img src="${video.gambar || 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop'}" 
+                     alt="${video.judul}" class="w-full h-48 object-cover">
+                ${videoLink}
+                ${lockOverlay}
+            </div>
+            <div class="p-6">
+                <h4 class="font-bold text-gray-800 mb-2">${video.judul}</h4>
+                <p class="text-sm ${isPremium ? 'text-teal-600 font-medium' : 'text-gray-600'}">
+                    ${isPremium ? '🔒 Khusus Member' : '🎬 Gratis - Klik untuk tonton'}
+                </p>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
 
         function renderModul(data) {
             const container = document.getElementById('modul-container');
