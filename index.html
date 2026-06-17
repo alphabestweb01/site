@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaBest Bimbel - Pahami Soal Sampai Ke Dasar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Poppins', sans-serif; }
+        .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }
+        .glass-dark { background: rgba(0,168,181,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(0,168,181,0.2); }
+        .gradient-bg { background: linear-gradient(135deg, #00A8B5 0%, #1B3A5C 100%); }
+        .gradient-text { background: linear-gradient(135deg, #00A8B5 0%, #1B3A5C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hover-lift { transition: all 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,168,181,0.3); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto; }
+        .modal.active { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: white; border-radius: 20px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; animation: modalSlide 0.3s ease; }
+        @keyframes modalSlide { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .section-title { position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: linear-gradient(135deg, #00A8B5 0%, #1B3A5C 100%); border-radius: 2px; }
+
+        /* ===== HEADER ===== */
+        .nav-desktop { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-desktop a { color: #374151; font-weight: 500; transition: color 0.2s; text-decoration: none; }
+        .nav-desktop a:hover { color: #0d9488; }
+        .nav-desktop .btn-daftar { background: linear-gradient(135deg, #0d9488, #2563eb); color: white; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 600; }
+        .nav-desktop .btn-daftar:hover { box-shadow: 0 10px 30px rgba(13,148,136,0.3); color: white; }
+
+        /* Hamburger - SELALU MUNCUL di semua ukuran */
+        .hamburger-btn { 
+            background: none; 
+            border: none; 
+            font-size: 1.5rem; 
+            color: #374151; 
+            cursor: pointer; 
+            padding: 0.5rem; 
+            display: block; /* SELALU TAMPAK */
+        }
+        .hamburger-btn:hover { color: #0d9488; }
+
+        /* Desktop dropdown - pakai hover agar lebih mudah */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-wrapper .dropdown-trigger {
+            background: none;
+            border: none;
+            color: #374151;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+        }
+        .dropdown-wrapper .dropdown-trigger:hover { color: #0d9488; }
+        .dropdown-wrapper .dropdown-trigger i { font-size: 0.65rem; }
+        
+        .dropdown-wrapper .dropdown-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem;
+            min-width: 220px;
+            z-index: 100;
+        }
+        /* Tampilkan dropdown saat hover atau saat ada class active */
+        .dropdown-wrapper:hover .dropdown-list,
+        .dropdown-wrapper.active .dropdown-list { display: block; }
+        .dropdown-wrapper .dropdown-list a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+        }
+        .dropdown-wrapper .dropdown-list a:hover { background: #f0fdfa; color: #0d9488; }
+        .dropdown-wrapper .dropdown-list a i { color: #0d9488; width: 1.25rem; }
+
+        /* Mobile Menu - Slide from right */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .mobile-menu-overlay.active { display: block; }
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: 0;
+            width: 320px;
+            max-width: 85vw;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 2rem 1.5rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #374151;
+            cursor: pointer;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .mobile-menu .close-btn:hover { color: #0d9488; }
+        .mobile-menu .brand-mobile {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .mobile-menu .brand-mobile img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .mobile-menu .brand-mobile h2 { font-size: 1.25rem; font-weight: 700; background: linear-gradient(135deg, #00A8B5, #1B3A5C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 0;
+            color: #374151;
+            font-weight: 500;
+            border-bottom: 1px solid #f3f4f6;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .mobile-menu a:hover { color: #0d9488; }
+        .mobile-menu .btn-daftar-mobile {
+            display: block;
+            margin-top: 1rem;
+            background: linear-gradient(135deg, #0d9488, #2563eb);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            text-align: center;
+            font-weight: 600;
+            border: none;
+        }
+        .mobile-menu .btn-daftar-mobile:hover { box-shadow: 0 10px 30px rgba(13,148,136,0.3); color: white; }
+        .mobile-submenu { padding-left: 1rem; }
+        .mobile-submenu a { border-bottom: none; padding: 0.4rem 0; font-size: 0.9rem; color: #6b7280; }
+        .mobile-submenu a:hover { color: #0d9488; }
+        .mobile-submenu .sub-label {
+            font-weight: 600;
+            color: #1f2937;
+            padding: 0.5rem 0 0.25rem 0;
+            display: block;
+            border-bottom: none;
+        }
+
+        /* Desktop menu - SEMBUNYIKAN di HP, TAMPILKAN di Desktop */
+        @media (max-width: 768px) {
+            .nav-desktop { display: none; }
+        }
+        @media (min-width: 769px) {
+            .nav-desktop { display: flex; }
+        }
+
+        .loading-spinner { display: flex; justify-content: center; align-items: center; padding: 40px; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #00A8B5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- ============================================================ -->
+    <!-- HEADER -->
+    <!-- ============================================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass bg-white/90 shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo & Brand -->
+                <a href="#beranda" class="flex items-center space-x-3">
+                    <img id="logo-img" src="https://i.imgur.com/zO2eZe9.png" alt="AlphaBest Logo" class="w-12 h-12 rounded-full object-cover">
+                    <div>
+                        <h1 class="text-xl font-bold gradient-text" id="brand-name">AlphaBest</h1>
+                        <p class="text-xs text-gray-600" id="brand-sub">Bimbel Terpercaya</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#beranda">Beranda</a>
+                    
+                    <!-- Program Dropdown - pakai hover -->
+                    <div class="dropdown-wrapper">
+                        <button class="dropdown-trigger">
+                            Program <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-list" id="desktop-program-dropdown">
+                            <!-- Akan diisi dari data -->
+                            <a href="#" onclick="showProgramModal('sd')"><i class="fas fa-book-open"></i> Kelas 4-6 SD</a>
+                            <a href="#" onclick="showProgramModal('smp')"><i class="fas fa-book-open"></i> Kelas 7-9 SMP</a>
+                            <a href="#" onclick="showProgramModal('sma')"><i class="fas fa-book-open"></i> Kelas 10-12 SMA</a>
+                            <a href="#" onclick="showProgramModal('tka')"><i class="fas fa-book-open"></i> Intensif TKA</a>
+                            <a href="#" onclick="showProgramModal('utbk')"><i class="fas fa-book-open"></i> Intensif UTBK</a>
+                        </div>
+                    </div>
+
+                    <a href="#kontak">Hubungi Kami</a>
+                    <a href="#daftar" class="btn-daftar">Daftar</a>
+                </nav>
+
+                <!-- Hamburger Button - SELALU MUNCUL -->
+                <button class="hamburger-btn" onclick="openMobileMenu()" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- MOBILE MENU OVERLAY -->
+    <!-- ============================================================ -->
+    <div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
+        
+        <div class="brand-mobile">
+            <img src="https://i.imgur.com/zO2eZe9.png" alt="AlphaBest">
+            <h2>AlphaBest</h2>
+        </div>
+
+        <a href="#beranda" onclick="closeMobileMenu()"><i class="fas fa-home mr-2 text-teal-600"></i> Beranda</a>
+        <a href="#tentang" onclick="closeMobileMenu()"><i class="fas fa-info-circle mr-2 text-teal-600"></i> Tentang Kami</a>
+
+        <!-- Program Submenu -->
+        <div class="mobile-submenu" id="mobile-program-menu">
+            <span class="sub-label"><i class="fas fa-book-open mr-2 text-teal-600"></i> Program</span>
+            <!-- Akan diisi dari data -->
+        </div>
+
+        <a href="#cabang" onclick="closeMobileMenu()"><i class="fas fa-map-marker-alt mr-2 text-teal-600"></i> Cabang Kami</a>
+
+        <!-- Keunggulan Submenu -->
+        <div class="mobile-submenu" id="mobile-keunggulan-menu">
+            <span class="sub-label"><i class="fas fa-star mr-2 text-teal-600"></i> Keunggulan</span>
+            <!-- Akan diisi dari data -->
+        </div>
+
+        <!-- Relasi Submenu -->
+        <div class="mobile-submenu" id="mobile-relasi-menu">
+            <span class="sub-label"><i class="fas fa-handshake mr-2 text-teal-600"></i> Bina Relasi</span>
+            <!-- Akan diisi dari data -->
+        </div>
+
+        <a href="#blog" onclick="closeMobileMenu()"><i class="fas fa-newspaper mr-2 text-teal-600"></i> Blog</a>
+        <a href="#sudut-belajar" onclick="closeMobileMenu()"><i class="fas fa-graduation-cap mr-2 text-teal-600"></i> Sudut Belajar</a>
+        <a href="#kontak" onclick="closeMobileMenu()"><i class="fas fa-phone mr-2 text-teal-600"></i> Hubungi Kami</a>
+        <a href="#karier" onclick="closeMobileMenu()"><i class="fas fa-briefcase mr-2 text-teal-600"></i> Karier</a>
+        
+        <a href="#daftar" class="btn-daftar-mobile" onclick="closeMobileMenu()">
+            <i class="fas fa-user-plus mr-2"></i> Daftar Sekarang
+        </a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HERO SECTION -->
+    <!-- ============================================================ -->
+    <section id="beranda" class="pt-24 pb-16 gradient-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+            <div class="absolute bottom-10 right-10 w-48 h-48 bg-white rounded-full"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4" id="hero-title">
+                        Pahami Soal<br>
+                        <span class="text-yellow-300">Sampai Ke Dasar</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mb-6 opacity-90" id="hero-subtitle">
+                        Bimbel terpercaya sejak 2020. Dibimbing oleh pengajar profesional dengan pengalaman puluhan tahun.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#daftar" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-semibold hover:shadow-xl transition text-center">
+                            <i class="fas fa-user-plus mr-2"></i>Daftar Sekarang
+                        </a>
+                        <a href="https://wa.me/6285117705334" class="glass px-8 py-3 rounded-full font-semibold hover:shadow-xl transition text-center">
+                            <i class="fab fa-whatsapp mr-2"></i>Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img id="hero-image" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop" alt="Students Learning" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TENTANG KAMI -->
+    <!-- ============================================================ -->
+    <section id="tentang" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Tentang Kami</h2>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-dark rounded-2xl p-8">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="md:w-1/3">
+                            <img id="tentang-image" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=400&fit=crop" alt="AlphaBest Bimbel" class="rounded-xl shadow-lg">
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4" id="tentang-judul">Bimbel AlphaBest</h3>
+                            <p class="text-gray-600 mb-4" id="tentang-deskripsi">
+                                Berdiri sejak tahun 2020 di Tambun, AlphaBest memulai kegiatannya sebagai bimbel rumahan. Dengan dedikasi dan kualitas pengajaran yang tinggi, kami berkembang menjadi beberapa cabang di Bekasi.
+                            </p>
+                            <p class="text-gray-600 mb-4">
+                                Kami dibantu oleh pengajar profesional dan berpengalaman puluhan tahun di dunia bimbel. Misi kami adalah membantu siswa memahami materi pelajaran sampai ke dasar, bukan hanya menghafal.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6" id="tentang-stats">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold gradient-text" id="stat-cabang">4+</div>
+                                    <div class="text-sm text-gray-600">Cabang</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold gradient-text" id="stat-tahun">6+</div>
+                                    <div class="text-sm text-gray-600">Tahun</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold gradient-text" id="stat-siswa">500+</div>
+                                    <div class="text-sm text-gray-600">Siswa</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold gradient-text" id="stat-pengajar">20+</div>
+                                    <div class="text-sm text-gray-600">Pengajar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PROGRAM KAMI -->
+    <!-- ============================================================ -->
+    <section id="program" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Program Kami</h2>
+                <p class="text-gray-600 mt-4">Pilihan program belajar untuk semua jenjang</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="program-container">
+                <!-- HARDCODE -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('sd')">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop" alt="Kelas SD" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kelas 4-6 SD</h3>
+                        <p class="text-gray-600 text-sm">Persiapan ujian dan penguatan dasar matematika, IPA, dan bahasa</p>
+                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('smp')">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop" alt="Kelas SMP" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kelas 7-9 SMP</h3>
+                        <p class="text-gray-600 text-sm">Persiapan ujian nasional dan penguatan konsep dasar</p>
+                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('sma')">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop" alt="Kelas SMA" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kelas 10-12 SMA</h3>
+                        <p class="text-gray-600 text-sm">Persiapan UTBK dan pendalaman materi sesuai jurusan</p>
+                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('tka')">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Intensif TKA" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intensif TKA</h3>
+                        <p class="text-gray-600 text-sm">Program intensif Tes Kompetensi Akademik</p>
+                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('utbk')">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop" alt="Intensif UTBK" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intensif UTBK</h3>
+                        <p class="text-gray-600 text-sm">Persiapan maksimal untuk UTBK SNBT</p>
+                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CABANG KAMI -->
+    <!-- ============================================================ -->
+    <section id="cabang" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Cabang Kami</h2>
+                <p class="text-gray-600 mt-4">Temukan cabang AlphaBest terdekat</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="cabang-container">
+                <!-- HARDCODE -->
+                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('tambun')">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop" alt="Cabang Tambun" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tambun</h3>
+                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Utama</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('alinda')">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop" alt="Cabang Alinda" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Alinda</h3>
+                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Baru</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('bekasi')">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop" alt="Cabang Bekasi Timur Regency" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Bekasi Timur Regency</h3>
+                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Premium</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('rawa')">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop" alt="Cabang Rawa Lumbu" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Rawa Lumbu</h3>
+                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Terbaru</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- KEUNGGULAN -->
+    <!-- ============================================================ -->
+    <section id="keunggulan" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Keunggulan Kami</h2>
+                <p class="text-gray-600 mt-4">Mengapa memilih AlphaBest?</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="keunggulan-container">
+                <!-- HARDCODE -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('fundamath')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-calculator text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fundamath</h3>
+                    <p class="text-gray-600 text-sm">Metode pembelajaran matematika dari dasar</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('psikotest')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Psikotest Berkala</h3>
+                    <p class="text-gray-600 text-sm">Tes psikologi rutin untuk perkembangan siswa</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('konsul')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-comments text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Konsul Jurusan</h3>
+                    <p class="text-gray-600 text-sm">Konsultasi pemilihan jurusan yang tepat</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('app')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Super App</h3>
+                    <p class="text-gray-600 text-sm">Aplikasi pembelajaran lengkap</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('modul')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Modul Lengkap</h3>
+                    <p class="text-gray-600 text-sm">Materi pembelajaran terstruktur</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('laporan')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Belajar</h3>
+                    <p class="text-gray-600 text-sm">Progress belajar siswa terpantau</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('tryout')">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clipboard-check text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Try Out Rutin</h3>
+                    <p class="text-gray-600 text-sm">Latihan soal berkala</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- BINA RELASI -->
+    <!-- ============================================================ -->
+    <section id="bina-relasi" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Bina Relasi</h2>
+                <p class="text-gray-600 mt-4">Program untuk membangun hubungan dengan orang tua dan siswa</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" id="relasi-container">
+                <!-- HARDCODE -->
+                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showRelasiModal('tryout')">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Try Out Online" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Try Out Online</h3>
+                        <p class="text-gray-600">Akses try out kapan saja dan di mana saja</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showRelasiModal('meeting')">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="Parent Meeting" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Parent Meeting</h3>
+                        <p class="text-gray-600">Pertemuan rutin dengan orang tua siswa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- BLOG -->
+    <!-- ============================================================ -->
+    <section id="blog" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Blog & Artikel</h2>
+                <p class="text-gray-600 mt-4">Tips belajar dan informasi pendidikan</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-container">
+                <!-- HARDCODE -->
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop" alt="Artikel 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-teal-600 mb-2">15 Juni 2026</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tips Sukses UTBK 2026</h3>
+                        <p class="text-gray-600 text-sm mb-4">Strategi persiapan UTBK yang efektif untuk masuk PTN impian...</p>
+                        <button class="text-teal-600 font-medium">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop" alt="Artikel 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-teal-600 mb-2">10 Juni 2026</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Cara Belajar Matematika Efektif</h3>
+                        <p class="text-gray-600 text-sm mb-4">Metode pembelajaran matematika yang mudah dipahami...</p>
+                        <button class="text-teal-600 font-medium">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop" alt="Artikel 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-teal-600 mb-2">5 Juni 2026</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Memilih Jurusan yang Tepat</h3>
+                        <p class="text-gray-600 text-sm mb-4">Panduan memilih jurusan sesuai minat dan bakat...</p>
+                        <button class="text-teal-600 font-medium">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SUDUT BELAJAR -->
+    <!-- ============================================================ -->
+    <section id="sudut-belajar" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Sudut Belajar</h2>
+                <p class="text-gray-600 mt-4">Video pembelajaran dan modul gratis</p>
+            </div>
+            
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Video Pembelajaran</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-container">
+                    <!-- HARDCODE -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop" alt="Video 1" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                <i class="fas fa-play-circle text-white text-5xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-gray-800 mb-2">Matematika Dasar: Aljabar</h4>
+                            <p class="text-sm text-gray-600">Gratis</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=250&fit=crop" alt="Video 2" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                <i class="fas fa-play-circle text-white text-5xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-gray-800 mb-2">Fisika: Hukum Newton</h4>
+                            <p class="text-sm text-gray-600">Gratis</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden relative">
+                        <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold z-10">
+                            <i class="fas fa-lock mr-1"></i>PREMIUM
+                        </div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=250&fit=crop" alt="Video Premium" class="w-full h-48 object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                                <i class="fas fa-lock text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-gray-800 mb-2">Kimia Organik Lengkap</h4>
+                            <p class="text-sm text-teal-600 font-medium">Khusus Member</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Modul Pembelajaran</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modul-container">
+                    <!-- HARDCODE -->
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Modul Matematika SD</h4>
+                                <p class="text-sm text-gray-600">Kelas 4-6</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition">
+                            <i class="fas fa-download mr-2"></i>Download
+                        </button>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Modul Fisika SMP</h4>
+                                <p class="text-sm text-gray-600">Kelas 7-9</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition">
+                            <i class="fas fa-download mr-2"></i>Download
+                        </button>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl shadow-lg p-6 relative">
+                        <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
+                            <i class="fas fa-lock mr-1"></i>PREMIUM
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Modul UTBK Lengkap</h4>
+                                <p class="text-sm text-gray-600">Semua Mata Pelajaran</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-gray-400 text-white py-2 rounded-lg cursor-not-allowed">
+                            <i class="fas fa-lock mr-2"></i>Khusus Member
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- HUBUNGI KAMI -->
+    <!-- ============================================================ -->
+    <section id="kontak" class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold section-title">Hubungi Kami</h2>
+                <p class="mt-4 opacity-90">Kami siap membantu Anda</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" id="kontak-container">
+                <!-- HARDCODE -->
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Telepon</h3>
+                    <p class="opacity-90">0851-1770-5334</p>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-whatsapp text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+                    <p class="opacity-90">0851-1770-5334</p>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center">
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="opacity-90">info@alphabest.id</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                        <i class="fab fa-facebook-f text-white text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                        <i class="fab fa-instagram text-white text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                        <i class="fab fa-youtube text-white text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition">
+                        <i class="fab fa-tiktok text-white text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PENDAFTARAN -->
+    <!-- ============================================================ -->
+    <section id="daftar" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Pendaftaran</h2>
+                <p class="text-gray-600 mt-4">Daftarkan diri Anda sekarang</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl shadow-lg p-8">
+                    <div class="aspect-video bg-white rounded-lg overflow-hidden">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMY_FORM_ID/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- KARIER -->
+    <!-- ============================================================ -->
+    <section id="karier" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Karier</h2>
+                <p class="text-gray-600 mt-4">Bergabung bersama tim AlphaBest</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <form id="careerForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
+                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">No. Telepon *</label>
+                                <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Tanggal Lahir *</label>
+                                <input type="date" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Alamat Lengkap *</label>
+                            <textarea required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Pendidikan Terakhir *</label>
+                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Pilih</option>
+                                    <option value="SMA">SMA/SMK</option>
+                                    <option value="D3">D3</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Posisi yang Dilamar *</label>
+                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Pilih Posisi</option>
+                                    <option value="Matematika">Pengajar Matematika</option>
+                                    <option value="Fisika">Pengajar Fisika</option>
+                                    <option value="Kimia">Pengajar Kimia</option>
+                                    <option value="Biologi">Pengajar Biologi</option>
+                                    <option value="B. Inggris">Pengajar Bahasa Inggris</option>
+                                    <option value="B. Indonesia">Pengajar Bahasa Indonesia</option>
+                                    <option value="Geografi">Pengajar Geografi</option>
+                                    <option value="Ekonomi">Pengajar Ekonomi</option>
+                                    <option value="Sejarah">Pengajar Sejarah</option>
+                                    <option value="Sosiologi">Pengajar Sosiologi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Pengalaman Mengajar</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500" placeholder="Ceritakan pengalaman mengajar Anda..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Upload CV (PDF)</label>
+                            <input type="file" accept=".pdf" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transition">
+                            <i class="fas fa-paper-plane mr-2"></i>Kirim Lamaran
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================================ -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://i.imgur.com/zO2eZe9.png" alt="AlphaBest Logo" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h3 class="text-xl font-bold" id="footer-brand">AlphaBest</h3>
+                            <p class="text-sm text-gray-400" id="footer-sub">Bimbel Terpercaya</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm" id="footer-tagline">Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Menu</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#beranda" class="hover:text-teal-400 transition">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-teal-400 transition">Tentang Kami</a></li>
+                        <li><a href="#program" class="hover:text-teal-400 transition">Program</a></li>
+                        <li><a href="#cabang" class="hover:text-teal-400 transition">Cabang</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-sm text-gray-400" id="footer-kontak">
+                        <li><i class="fas fa-phone mr-2"></i>0851-1770-5334</li>
+                        <li><i class="fas fa-envelope mr-2"></i>info@alphabest.id</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Tambun, Bekasi</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Sosial Media</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-teal-600 transition">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p id="footer-copyright">&copy; 2026 AlphaBest Bimbel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- WHATSAPP FLOAT -->
+    <!-- ============================================================ -->
+    <a href="https://wa.me/6285117705334" class="whatsapp-float bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- ============================================================ -->
+    <!-- MODAL -->
+    <!-- ============================================================ -->
+    <div id="modal" class="modal">
+        <div class="modal-content p-8 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // ============================================================
+        // KONFIGURASI - GANTI DENGAN URL WEB APP ANDA
+        // ============================================================
+        const SHEET_CONFIG = {
+            webAppUrl: 'https://script.google.com/macros/s/AKfycbw0X03VPlnMv_9-OYF2IKB3OJK6qSjzWq2FxTl5ISaDhcBizHNBW2NRRlCOtTXlM73Bvg/exec', // GANTI INI!
+            logoUrl: 'https://i.imgur.com/zO2eZe9.png',
+            sheets: {
+                program: 'program',
+                cabang: 'cabang',
+                keunggulan: 'keunggulan',
+                relasi: 'relasi',
+                blog: 'blog',
+                tentang: 'tentang',
+                hero: 'hero',
+                kontak: 'kontak',
+                video: 'video_pembelajaran',
+                modul: 'modul',
+                footer: 'footer'
+            }
+        };
+
+        // ============================================================
+        // MOBILE MENU
+        // ============================================================
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('mobileOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ============================================================
+        // AMBIL DATA DARI GOOGLE SHEETS
+        // ============================================================
+        async function fetchSheetData(sheetName) {
+            try {
+                const url = `${SHEET_CONFIG.webAppUrl}?sheet=${sheetName}`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok');
+                return await response.json();
+            } catch (error) {
+                console.warn(`Gagal fetch ${sheetName}:`, error);
+                return null;
+            }
+        }
+
+        function getValueByKey(data, key) {
+            if (!data) return null;
+            const item = data.find(d => d.key === key);
+            return item ? item.value : null;
+        }
+
+        // ============================================================
+        // RENDER FUNCTIONS
+        // ============================================================
+
+        function renderHeader(data) {
+            if (!data) return;
+            const brand = getValueByKey(data, 'judul');
+            const sub = getValueByKey(data, 'deskripsi');
+            if (brand) {
+                document.getElementById('brand-name').textContent = brand;
+                document.getElementById('footer-brand').textContent = brand;
+            }
+            if (sub) {
+                document.getElementById('brand-sub').textContent = sub;
+                document.getElementById('footer-sub').textContent = sub;
+            }
+            const tagline = getValueByKey(data, 'tagline');
+            if (tagline) document.getElementById('footer-tagline').textContent = tagline;
+            const tahun = getValueByKey(data, 'tahun');
+            if (tahun) document.getElementById('footer-copyright').textContent = `© ${tahun} AlphaBest Bimbel. All rights reserved.`;
+        }
+
+        function renderHero(data) {
+            if (!data || data.length === 0) return;
+            const hero = data[0];
+            if (!hero) return;
+            const titleEl = document.getElementById('hero-title');
+            if (hero.judul) {
+                const parts = hero.judul.split(' ');
+                const lastWord = parts.pop();
+                titleEl.innerHTML = parts.join(' ') + ' <span class="text-yellow-300">' + lastWord + '</span>';
+            }
+            if (hero.sub_judul) document.getElementById('hero-subtitle').textContent = hero.sub_judul;
+            if (hero.gambar) document.getElementById('hero-image').src = hero.gambar;
+        }
+
+        function renderTentang(data) {
+            if (!data || data.length === 0) return;
+            const judul = getValueByKey(data, 'judul');
+            const deskripsi = getValueByKey(data, 'deskripsi');
+            const gambar = getValueByKey(data, 'gambar');
+            const cabang = getValueByKey(data, 'cabang');
+            const siswa = getValueByKey(data, 'siswa');
+            const pengajar = getValueByKey(data, 'pengajar');
+            const tahun = getValueByKey(data, 'tahun');
+            if (judul) document.getElementById('tentang-judul').textContent = judul;
+            if (deskripsi) document.getElementById('tentang-deskripsi').textContent = deskripsi;
+            if (gambar) document.getElementById('tentang-image').src = gambar;
+            if (cabang) document.getElementById('stat-cabang').textContent = cabang;
+            if (siswa) document.getElementById('stat-siswa').textContent = siswa;
+            if (pengajar) document.getElementById('stat-pengajar').textContent = pengajar;
+            if (tahun) {
+                const tahunNum = parseInt(tahun);
+                const sekarang = new Date().getFullYear();
+                document.getElementById('stat-tahun').textContent = (sekarang - tahunNum) + '+';
+            }
+        }
+
+        function renderProgram(data) {
+            const container = document.getElementById('program-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(program => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer';
+                card.onclick = () => showProgramModal(program.id);
+                card.innerHTML = `
+                    <img src="${program.gambar || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop'}" 
+                         alt="${program.judul}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${program.judul}</h3>
+                        <p class="text-gray-600 text-sm">${program.deskripsi || ''}</p>
+                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            
+            // Update desktop dropdown
+            const desktopDropdown = document.getElementById('desktop-program-dropdown');
+            if (desktopDropdown) {
+                desktopDropdown.innerHTML = '';
+                data.forEach(item => {
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.onclick = (e) => { e.preventDefault(); showProgramModal(item.id); };
+                    a.innerHTML = `<i class="fas fa-book-open"></i> ${item.judul}`;
+                    desktopDropdown.appendChild(a);
+                });
+            }
+
+            // Update mobile menu
+            const mobileMenu = document.getElementById('mobile-program-menu');
+            if (mobileMenu) {
+                const label = mobileMenu.querySelector('.sub-label');
+                mobileMenu.innerHTML = '';
+                if (label) mobileMenu.appendChild(label);
+                data.forEach(item => {
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.onclick = (e) => { e.preventDefault(); closeMobileMenu(); showProgramModal(item.id); };
+                    a.innerHTML = `<i class="fas fa-chevron-right mr-2 text-teal-400"></i> ${item.judul}`;
+                    mobileMenu.appendChild(a);
+                });
+            }
+        }
+
+        function renderCabang(data) {
+            const container = document.getElementById('cabang-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(cabang => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer';
+                card.onclick = () => showCabangModal(cabang.id);
+                card.innerHTML = `
+                    <img src="${cabang.gambar || 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop'}" 
+                         alt="${cabang.nama}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${cabang.nama}</h3>
+                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>${cabang.label || 'Cabang'}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderKeunggulan(data) {
+            const container = document.getElementById('keunggulan-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer';
+                card.onclick = () => showKeunggulanModal(item.id);
+                card.innerHTML = `
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas ${item.icon || 'fa-star'} text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">${item.judul}</h3>
+                    <p class="text-gray-600 text-sm">${item.deskripsi || ''}</p>
+                `;
+                container.appendChild(card);
+            });
+
+            const mobileMenu = document.getElementById('mobile-keunggulan-menu');
+            if (mobileMenu) {
+                const label = mobileMenu.querySelector('.sub-label');
+                mobileMenu.innerHTML = '';
+                if (label) mobileMenu.appendChild(label);
+                data.forEach(item => {
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.onclick = (e) => { e.preventDefault(); closeMobileMenu(); showKeunggulanModal(item.id); };
+                    a.innerHTML = `<i class="fas fa-chevron-right mr-2 text-teal-400"></i> ${item.judul}`;
+                    mobileMenu.appendChild(a);
+                });
+            }
+        }
+
+        function renderRelasi(data) {
+            const container = document.getElementById('relasi-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer';
+                card.onclick = () => showRelasiModal(item.id);
+                card.innerHTML = `
+                    <img src="${item.gambar || 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop'}" 
+                         alt="${item.judul}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${item.judul}</h3>
+                        <p class="text-gray-600">${item.deskripsi || ''}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            const mobileMenu = document.getElementById('mobile-relasi-menu');
+            if (mobileMenu) {
+                const label = mobileMenu.querySelector('.sub-label');
+                mobileMenu.innerHTML = '';
+                if (label) mobileMenu.appendChild(label);
+                data.forEach(item => {
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.onclick = (e) => { e.preventDefault(); closeMobileMenu(); showRelasiModal(item.id); };
+                    a.innerHTML = `<i class="fas fa-chevron-right mr-2 text-teal-400"></i> ${item.judul}`;
+                    mobileMenu.appendChild(a);
+                });
+            }
+        }
+
+        function renderBlog(data) {
+            const container = document.getElementById('blog-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(article => {
+                const card = document.createElement('article');
+                card.className = 'bg-white rounded-2xl shadow-lg overflow-hidden hover-lift';
+                card.innerHTML = `
+                    <img src="${article.gambar || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop'}" 
+                         alt="${article.judul}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-teal-600 mb-2">${article.tanggal || ''}</div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">${article.judul}</h3>
+                        <p class="text-gray-600 text-sm mb-4">${article.deskripsi || ''}</p>
+                        <button class="text-teal-600 font-medium">Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i></button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderVideo(data) {
+            const container = document.getElementById('video-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(video => {
+                const isPremium = video.is_premium === 'true' || video.is_premium === true;
+                const card = document.createElement('div');
+                card.className = 'bg-gray-50 rounded-2xl shadow-lg overflow-hidden' + (isPremium ? ' relative' : '');
+                let premiumBadge = '', lockOverlay = '';
+                if (isPremium) {
+                    premiumBadge = `<div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold z-10">
+                        <i class="fas fa-lock mr-1"></i>PREMIUM</div>`;
+                    lockOverlay = `<div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <i class="fas fa-lock text-white text-3xl"></i></div>`;
+                }
+                card.innerHTML = `
+                    ${premiumBadge}
+                    <div class="relative">
+                        <img src="${video.gambar || 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop'}" 
+                             alt="${video.judul}" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-white text-5xl"></i>
+                        </div>
+                        ${lockOverlay}
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-gray-800 mb-2">${video.judul}</h4>
+                        <p class="text-sm ${isPremium ? 'text-teal-600 font-medium' : 'text-gray-600'}">
+                            ${isPremium ? 'Khusus Member' : 'Gratis'}
+                        </p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderModul(data) {
+            const container = document.getElementById('modul-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(modul => {
+                const isPremium = modul.is_premium === 'true' || modul.is_premium === true;
+                const card = document.createElement('div');
+                card.className = 'bg-gray-50 rounded-2xl shadow-lg p-6' + (isPremium ? ' relative' : '');
+                let premiumBadge = '', buttonHtml = '';
+                if (isPremium) {
+                    premiumBadge = `<div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
+                        <i class="fas fa-lock mr-1"></i>PREMIUM</div>`;
+                    buttonHtml = `<button class="w-full bg-gray-400 text-white py-2 rounded-lg cursor-not-allowed">
+                        <i class="fas fa-lock mr-2"></i>Khusus Member</button>`;
+                } else {
+                    buttonHtml = `<button class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition">
+                        <i class="fas fa-download mr-2"></i>Download</button>`;
+                }
+                card.innerHTML = `
+                    ${premiumBadge}
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">${modul.judul}</h4>
+                            <p class="text-sm text-gray-600">${modul.deskripsi || ''}</p>
+                        </div>
+                    </div>
+                    ${buttonHtml}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderKontak(data) {
+            const container = document.getElementById('kontak-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass rounded-2xl p-6 text-center';
+                card.innerHTML = `
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas ${item.icon || 'fa-phone'} text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">${item.judul}</h3>
+                    <p class="opacity-90">${item.detail || ''}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // ============================================================
+        // MODAL FUNCTIONS
+        // ============================================================
+        let dataCache = {};
+
+        function showModal(content) {
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        function showProgramModal(id) {
+            const data = dataCache.program || [];
+            const item = data.find(p => p.id === id);
+            if (item) {
+                showModal(`
+                    <h2 class="text-2xl font-bold gradient-text mb-4">${item.judul}</h2>
+                    <img src="${item.gambar || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=300&fit=crop'}" 
+                         class="w-full rounded-lg mb-4">
+                    <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
+                `);
+            } else {
+                // Fallback hardcode
+                const fallback = {
+                    sd: { judul: 'Kelas 4-6 SD', detail: 'Program untuk SD...' },
+                    smp: { judul: 'Kelas 7-9 SMP', detail: 'Program untuk SMP...' },
+                    sma: { judul: 'Kelas 10-12 SMA', detail: 'Program untuk SMA...' },
+                    tka: { judul: 'Intensif TKA', detail: 'Program TKA...' },
+                    utbk: { judul: 'Intensif UTBK', detail: 'Program UTBK...' }
+                };
+                const fb = fallback[id];
+                if (fb) {
+                    showModal(`<h2 class="text-2xl font-bold gradient-text mb-4">${fb.judul}</h2><p class="text-gray-600">${fb.detail}</p>`);
+                } else {
+                    showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
+                }
+            }
+        }
+
+        function showCabangModal(id) {
+            const data = dataCache.cabang || [];
+            const item = data.find(c => c.id === id);
+            if (item) {
+                showModal(`
+                    <h2 class="text-2xl font-bold gradient-text mb-4">${item.nama}</h2>
+                    <img src="${item.gambar || 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=300&fit=crop'}" 
+                         class="w-full rounded-lg mb-4">
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-teal-600 mr-3 mt-1"></i>
+                            <div><h4 class="font-bold text-gray-800">Alamat</h4><p class="text-gray-600">${item.alamat || ''}</p></div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-teal-600 mr-3 mt-1"></i>
+                            <div><h4 class="font-bold text-gray-800">Telepon</h4><p class="text-gray-600">${item.telepon || ''}</p></div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-teal-600 mr-3 mt-1"></i>
+                            <div><h4 class="font-bold text-gray-800">Jam Operasional</h4><p class="text-gray-600">${item.jam_operasional || ''}</p></div>
+                        </div>
+                    </div>
+                `);
+            } else {
+                showModal(`<p class="text-gray-600">Data cabang tidak ditemukan</p>`);
+            }
+        }
+
+        function showKeunggulanModal(id) {
+            const data = dataCache.keunggulan || [];
+            const item = data.find(k => k.id === id);
+            if (item) {
+                showModal(`
+                    <h2 class="text-2xl font-bold gradient-text mb-4">${item.judul}</h2>
+                    <div class="w-20 h-20 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas ${item.icon || 'fa-star'} text-white text-3xl"></i>
+                    </div>
+                    <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
+                `);
+            } else {
+                showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
+            }
+        }
+
+        function showRelasiModal(id) {
+            const data = dataCache.relasi || [];
+            const item = data.find(r => r.id === id);
+            if (item) {
+                showModal(`
+                    <h2 class="text-2xl font-bold gradient-text mb-4">${item.judul}</h2>
+                    <img src="${item.gambar || 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=300&fit=crop'}" 
+                         class="w-full rounded-lg mb-4">
+                    <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
+                `);
+            } else {
+                showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
+            }
+        }
+
+        // ============================================================
+        // LOAD DATA
+        // ============================================================
+        async function loadAllData() {
+            console.log('🔄 Memuat data dari Google Sheets...');
+            
+            try {
+                const [program, cabang, keunggulan, relasi, blog, tentang, hero, kontak, video, modul, footer] = await Promise.all([
+                    fetchSheetData(SHEET_CONFIG.sheets.program),
+                    fetchSheetData(SHEET_CONFIG.sheets.cabang),
+                    fetchSheetData(SHEET_CONFIG.sheets.keunggulan),
+                    fetchSheetData(SHEET_CONFIG.sheets.relasi),
+                    fetchSheetData(SHEET_CONFIG.sheets.blog),
+                    fetchSheetData(SHEET_CONFIG.sheets.tentang),
+                    fetchSheetData(SHEET_CONFIG.sheets.hero),
+                    fetchSheetData(SHEET_CONFIG.sheets.kontak),
+                    fetchSheetData(SHEET_CONFIG.sheets.video),
+                    fetchSheetData(SHEET_CONFIG.sheets.modul),
+                    fetchSheetData(SHEET_CONFIG.sheets.footer)
+                ]);
+
+                dataCache.program = program;
+                dataCache.cabang = cabang;
+                dataCache.keunggulan = keunggulan;
+                dataCache.relasi = relasi;
+                dataCache.blog = blog;
+                dataCache.tentang = tentang;
+                dataCache.hero = hero;
+                dataCache.kontak = kontak;
+                dataCache.video = video;
+                dataCache.modul = modul;
+                dataCache.footer = footer;
+
+                renderHeader(footer);
+                renderHero(hero);
+                renderTentang(tentang);
+                renderProgram(program);
+                renderCabang(cabang);
+                renderKeunggulan(keunggulan);
+                renderRelasi(relasi);
+                renderBlog(blog);
+                renderVideo(video);
+                renderModul(modul);
+                renderKontak(kontak);
+
+                console.log('✅ Data berhasil dimuat!');
+                document.body.classList.add('data-loaded');
+
+            } catch (error) {
+                console.error('❌ Gagal memuat data:', error);
+            }
+        }
+
+        // ============================================================
+        // CAREER FORM
+        // ============================================================
+        document.getElementById('careerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Lamaran Anda telah terkirim! Kami akan menghubungi Anda segera.');
+            this.reset();
+        });
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', loadAllData);
+    </script>
+</body>
+</html>
