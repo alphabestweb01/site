@@ -137,6 +137,16 @@
             .modal-content { padding: 1.5rem; }
             .modal-content .flex { flex-direction: column; }
         }
+
+        /* WhatsApp icon di Hubungi Kami - biar keliatan */
+        .wa-icon-wrapper {
+            background: #25D366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        .wa-icon-wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -646,7 +656,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- HUBUNGI KAMI -->
+    <!-- HUBUNGI KAMI - ICON WHATSAPP PAKE BACKGROUND HIJAU -->
     <!-- ============================================================ -->
     <section id="kontak" class="py-16 gradient-bg text-white">
         <div class="container mx-auto px-4">
@@ -655,7 +665,7 @@
                 <p class="mt-4 opacity-90">Kami siap membantu Anda</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" id="kontak-container">
-                <!-- HARDCODE -->
+                <!-- Telepon -->
                 <div class="glass rounded-2xl p-6 text-center">
                     <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-phone text-white text-2xl"></i>
@@ -663,13 +673,15 @@
                     <h3 class="text-xl font-bold mb-2">Telepon</h3>
                     <p class="opacity-90">0851-1770-5334</p>
                 </div>
+                <!-- WhatsApp - BACKGROUND HIJAU BIAR KELIATAN -->
                 <div class="glass rounded-2xl p-6 text-center">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fab fa-whatsapp text-white text-2xl"></i>
+                    <div class="w-16 h-16 wa-icon-wrapper rounded-full flex items-center justify-center mx-auto mb-4 transition">
+                        <i class="fab fa-whatsapp text-white text-3xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
                     <p class="opacity-90">0851-1770-5334</p>
                 </div>
+                <!-- Email -->
                 <div class="glass rounded-2xl p-6 text-center">
                     <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-envelope text-white text-2xl"></i>
@@ -698,7 +710,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- PENDAFTARAN - GANTI LINK GOOGLE FORM -->
+    <!-- PENDAFTARAN - PAKAI LINK GOOGLE FORM ASLI -->
     <!-- ============================================================ -->
     <section id="daftar" class="py-16 bg-white">
         <div class="container mx-auto px-4">
@@ -709,9 +721,8 @@
             <div class="max-w-4xl mx-auto">
                 <div class="bg-gray-50 rounded-2xl shadow-lg p-8">
                     <div class="aspect-video bg-white rounded-lg overflow-hidden">
-                        <!-- ⚠️ GANTI LINK DI BAWAH DENGAN GOOGLE FORM ASLI KAMU ⚠️ -->
                         <iframe 
-                            src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" 
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSdi8tGwC7Y7qAaIZ-EYVBldPm3J2to9fuyR14OWpHVc-QRgZQ/viewform?embedded=true" 
                             width="100%" 
                             height="600" 
                             frameborder="0" 
