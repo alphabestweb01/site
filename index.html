@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlphaBest Bimbel - Pahami Soal Sampai Ke Dasar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ===== FONT AWESOME - PAKE 2 CDN BIAR AMAN ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Poppins', sans-serif; }
@@ -138,14 +142,36 @@
             .modal-content .flex { flex-direction: column; }
         }
 
-        /* WhatsApp icon di Hubungi Kami - biar keliatan */
+        /* ===== WHATSAPP ICON - FIX BIAR KELIATAN ===== */
         .wa-icon-wrapper {
-            background: #25D366;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            background: #25D366 !important;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5) !important;
+            border: 3px solid rgba(255,255,255,0.3) !important;
         }
         .wa-icon-wrapper:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            transform: scale(1.08) !important;
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7) !important;
+            border-color: white !important;
+        }
+        
+        /* ===== FALLBACK BUAT ICON YANG GAK LOAD ===== */
+        .fa-whatsapp::before {
+            content: "\f232" !important;
+            font-family: "Font Awesome 6 Brands" !important;
+        }
+        
+        /* ===== CONTACT CARD - BIAR LEBIH KEREN ===== */
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== FORM PENDAFTARAN ===== */
+        .form-google-iframe {
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
     </style>
 </head>
@@ -656,7 +682,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- HUBUNGI KAMI - ICON WHATSAPP PAKE BACKGROUND HIJAU -->
+    <!-- HUBUNGI KAMI - ICON WHATSAPP FIX PAKE EMOJI FALLBACK -->
     <!-- ============================================================ -->
     <section id="kontak" class="py-16 gradient-bg text-white">
         <div class="container mx-auto px-4">
@@ -666,23 +692,29 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" id="kontak-container">
                 <!-- Telepon -->
-                <div class="glass rounded-2xl p-6 text-center">
+                <div class="glass rounded-2xl p-6 text-center contact-card">
                     <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-phone text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Telepon</h3>
                     <p class="opacity-90">0851-1770-5334</p>
                 </div>
-                <!-- WhatsApp - BACKGROUND HIJAU BIAR KELIATAN -->
-                <div class="glass rounded-2xl p-6 text-center">
-                    <div class="w-16 h-16 wa-icon-wrapper rounded-full flex items-center justify-center mx-auto mb-4 transition">
-                        <i class="fab fa-whatsapp text-white text-3xl"></i>
+                
+                <!-- WhatsApp - PAKE ICON + EMOJI FALLBACK -->
+                <div class="glass rounded-2xl p-6 text-center contact-card bg-[#25D366]/20 backdrop-blur-sm border border-white/10">
+                    <div class="w-16 h-16 wa-icon-wrapper rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                        <i class="fab fa-whatsapp text-white text-3xl" id="waIcon"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
                     <p class="opacity-90">0851-1770-5334</p>
+                    <a href="https://wa.me/6285117705334" target="_blank" 
+                       class="mt-3 inline-block bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-full text-sm font-medium transition">
+                        <span class="inline-block mr-1">💬</span> Chat Sekarang
+                    </a>
                 </div>
+                
                 <!-- Email -->
-                <div class="glass rounded-2xl p-6 text-center">
+                <div class="glass rounded-2xl p-6 text-center contact-card">
                     <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-envelope text-white text-2xl"></i>
                     </div>
@@ -710,7 +742,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- PENDAFTARAN - PAKAI LINK GOOGLE FORM ASLI -->
+    <!-- PENDAFTARAN - TETAP PAKE EMBED GOOGLE FORM -->
     <!-- ============================================================ -->
     <section id="daftar" class="py-16 bg-white">
         <div class="container mx-auto px-4">
@@ -718,26 +750,31 @@
                 <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Pendaftaran</h2>
                 <p class="text-gray-600 mt-4">Daftarkan diri Anda sekarang</p>
             </div>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gray-50 rounded-2xl shadow-lg p-8">
-                    <div class="aspect-video bg-white rounded-lg overflow-hidden">
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-gray-50 rounded-2xl shadow-lg p-4 md:p-8">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-inner form-google-iframe">
                         <iframe 
                             src="https://docs.google.com/forms/d/e/1FAIpQLSdi8tGwC7Y7qAaIZ-EYVBldPm3J2to9fuyR14OWpHVc-QRgZQ/viewform?embedded=true" 
                             width="100%" 
-                            height="600" 
+                            height="700" 
                             frameborder="0" 
                             marginheight="0" 
-                            marginwidth="0">
+                            marginwidth="0"
+                            style="min-height: 600px;"
+                            class="w-full">
                             Memuat…
                         </iframe>
                     </div>
+                    <p class="text-xs text-gray-400 text-center mt-4">
+                        <i class="fas fa-lock mr-1 text-green-500"></i> Data Anda aman dan tidak akan disebarkan
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- KARIER -->
+    <!-- KARIER - UDAH TERHUBUNG KE SHEETS -->
     <!-- ============================================================ -->
     <section id="karier" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -751,31 +788,31 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
-                                <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                <input type="text" id="career_nama" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Email *</label>
-                                <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                <input type="email" id="career_email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">No. Telepon *</label>
-                                <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                <input type="tel" id="career_telepon" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Tanggal Lahir *</label>
-                                <input type="date" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                <input type="date" id="career_tgl_lahir" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                             </div>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2">Alamat Lengkap *</label>
-                            <textarea required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500"></textarea>
+                            <textarea id="career_alamat" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500"></textarea>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Pendidikan Terakhir *</label>
-                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                <select id="career_pendidikan" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                                     <option value="">Pilih</option>
                                     <option value="SMA">SMA/SMK</option>
                                     <option value="D3">D3</option>
@@ -785,7 +822,7 @@
                             </div>
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">Posisi yang Dilamar *</label>
-                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                                <select id="career_posisi" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                                     <option value="">Pilih Posisi</option>
                                     <option value="Matematika">Pengajar Matematika</option>
                                     <option value="Fisika">Pengajar Fisika</option>
@@ -802,15 +839,16 @@
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2">Pengalaman Mengajar</label>
-                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500" placeholder="Ceritakan pengalaman mengajar Anda..."></textarea>
+                            <textarea id="career_pengalaman" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500" placeholder="Ceritakan pengalaman mengajar Anda..."></textarea>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2">Upload CV (PDF)</label>
-                            <input type="file" accept=".pdf" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
+                            <input type="file" id="career_cv" accept=".pdf" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transition">
+                        <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transition" id="careerSubmitBtn">
                             <i class="fas fa-paper-plane mr-2"></i>Kirim Lamaran
                         </button>
+                        <div id="careerStatus" class="hidden text-center mt-3"></div>
                     </form>
                 </div>
             </div>
@@ -877,7 +915,7 @@
     <!-- ============================================================ -->
     <!-- WHATSAPP FLOAT -->
     <!-- ============================================================ -->
-    <a href="https://wa.me/6285117705334" class="whatsapp-float bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition">
+    <a href="https://wa.me/6285117705334" class="whatsapp-float bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition border-2 border-white/30">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
@@ -914,7 +952,8 @@
                 kontak: 'kontak',
                 video: 'video_pembelajaran',
                 modul: 'modul',
-                footer: 'footer'
+                footer: 'footer',
+                karier: 'karier'
             }
         };
 
@@ -1370,7 +1409,7 @@
             container.innerHTML = '';
             data.forEach(item => {
                 const card = document.createElement('div');
-                card.className = 'glass rounded-2xl p-6 text-center';
+                card.className = 'glass rounded-2xl p-6 text-center contact-card';
                 card.innerHTML = `
                     <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas ${item.icon || 'fa-phone'} text-white text-2xl"></i>
@@ -1489,6 +1528,77 @@
         }
 
         // ============================================================
+        // CAREER FORM - KIRIM KE GOOGLE SHEETS
+        // ============================================================
+        document.getElementById('careerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('careerSubmitBtn');
+            const statusDiv = document.getElementById('careerStatus');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Mengirim...';
+            statusDiv.classList.add('hidden');
+            
+            const formData = {
+                nama_lengkap: document.getElementById('career_nama').value.trim(),
+                email: document.getElementById('career_email').value.trim(),
+                telepon: document.getElementById('career_telepon').value.trim(),
+                tanggal_lahir: document.getElementById('career_tgl_lahir').value,
+                alamat: document.getElementById('career_alamat').value.trim(),
+                pendidikan: document.getElementById('career_pendidikan').value,
+                posisi: document.getElementById('career_posisi').value,
+                pengalaman: document.getElementById('career_pengalaman').value.trim(),
+                cv_link: document.getElementById('career_cv').files[0] ? document.getElementById('career_cv').files[0].name : ''
+            };
+            
+            try {
+                await fetch(SHEET_CONFIG.webAppUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                statusDiv.className = 'mt-4 p-4 rounded-lg bg-green-100 text-green-700';
+                statusDiv.innerHTML = '✅ Lamaran berhasil dikirim! Tim kami akan menghubungi Anda segera.';
+                statusDiv.classList.remove('hidden');
+                this.reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                statusDiv.className = 'mt-4 p-4 rounded-lg bg-red-100 text-red-700';
+                statusDiv.innerHTML = '❌ Gagal mengirim lamaran. Silakan coba lagi atau hubungi kami langsung via WhatsApp.';
+                statusDiv.classList.remove('hidden');
+            }
+            
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Kirim Lamaran';
+        });
+
+        // ============================================================
+        // FIX WHATSAPP ICON - FALLBACK PAKE EMOJI KALO ICON GAK LOAD
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cek apakah Font Awesome berhasil load
+            setTimeout(function() {
+                const waIcon = document.getElementById('waIcon');
+                if (waIcon) {
+                    const computedStyle = window.getComputedStyle(waIcon, '::before');
+                    const content = computedStyle.getPropertyValue('content');
+                    // Kalo content kosong atau cuma "", berarti icon gak load
+                    if (!content || content === '""' || content === 'none') {
+                        // Ganti dengan emoji
+                        waIcon.className = '';
+                        waIcon.textContent = '💬';
+                        waIcon.style.fontSize = '2rem';
+                        waIcon.style.fontStyle = 'normal';
+                    }
+                }
+            }, 1500);
+        });
+
+        // ============================================================
         // LOAD DATA
         // ============================================================
         async function loadAllData() {
@@ -1540,15 +1650,6 @@
                 console.error('❌ Gagal memuat data:', error);
             }
         }
-
-        // ============================================================
-        // CAREER FORM
-        // ============================================================
-        document.getElementById('careerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Lamaran Anda telah terkirim! Kami akan menghubungi Anda segera.');
-            this.reset();
-        });
 
         // ============================================================
         // INIT
