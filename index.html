@@ -173,6 +173,15 @@
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
+
+        /* ===== LOADING STATE UNTUK KONTEN DINAMIS ===== */
+        .content-loading {
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .content-loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -348,47 +357,7 @@
                 <p class="text-gray-600 mt-4">Pilihan program belajar untuk semua jenjang</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="program-container">
-                <!-- HARDCODE -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('sd')">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop" alt="Kelas SD" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kelas 4-6 SD</h3>
-                        <p class="text-gray-600 text-sm">Persiapan ujian dan penguatan dasar matematika, IPA, dan bahasa</p>
-                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('smp')">
-                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop" alt="Kelas SMP" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kelas 7-9 SMP</h3>
-                        <p class="text-gray-600 text-sm">Persiapan ujian nasional dan penguatan konsep dasar</p>
-                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('sma')">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop" alt="Kelas SMA" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kelas 10-12 SMA</h3>
-                        <p class="text-gray-600 text-sm">Persiapan UTBK dan pendalaman materi sesuai jurusan</p>
-                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('tka')">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Intensif TKA" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intensif TKA</h3>
-                        <p class="text-gray-600 text-sm">Program intensif Tes Kompetensi Akademik</p>
-                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showProgramModal('utbk')">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop" alt="Intensif UTBK" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intensif UTBK</h3>
-                        <p class="text-gray-600 text-sm">Persiapan maksimal untuk UTBK SNBT</p>
-                        <button class="mt-4 text-teal-600 font-medium">Lihat Detail <i class="fas fa-arrow-right ml-1"></i></button>
-                    </div>
-                </div>
+                <!-- AKAN DIISI OLEH JAVASCRIPT -->
             </div>
         </div>
     </section>
@@ -403,35 +372,7 @@
                 <p class="text-gray-600 mt-4">Temukan cabang AlphaBest terdekat</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="cabang-container">
-                <!-- HARDCODE -->
-                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('tambun')">
-                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop" alt="Cabang Tambun" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tambun</h3>
-                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Utama</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('alinda')">
-                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop" alt="Cabang Alinda" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Alinda</h3>
-                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Baru</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('bekasi')">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop" alt="Cabang Bekasi Timur Regency" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Bekasi Timur Regency</h3>
-                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Premium</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showCabangModal('rawa')">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop" alt="Cabang Rawa Lumbu" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Rawa Lumbu</h3>
-                        <p class="text-gray-600 text-sm"><i class="fas fa-map-marker-alt text-teal-600 mr-1"></i>Cabang Terbaru</p>
-                    </div>
-                </div>
+                <!-- AKAN DIISI OLEH JAVASCRIPT -->
             </div>
         </div>
     </section>
@@ -446,56 +387,7 @@
                 <p class="text-gray-600 mt-4">Mengapa memilih AlphaBest?</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="keunggulan-container">
-                <!-- HARDCODE -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('fundamath')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-calculator text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fundamath</h3>
-                    <p class="text-gray-600 text-sm">Metode pembelajaran matematika dari dasar</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('psikotest')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-brain text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Psikotest Berkala</h3>
-                    <p class="text-gray-600 text-sm">Tes psikologi rutin untuk perkembangan siswa</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('konsul')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-comments text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Konsul Jurusan</h3>
-                    <p class="text-gray-600 text-sm">Konsultasi pemilihan jurusan yang tepat</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('app')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Super App</h3>
-                    <p class="text-gray-600 text-sm">Aplikasi pembelajaran lengkap</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('modul')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-book text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Modul Lengkap</h3>
-                    <p class="text-gray-600 text-sm">Materi pembelajaran terstruktur</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('laporan')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-chart-line text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Laporan Belajar</h3>
-                    <p class="text-gray-600 text-sm">Progress belajar siswa terpantau</p>
-                </div>
-                <div class="bg-white rounded-2xl shadow-lg p-6 hover-lift cursor-pointer" onclick="showKeunggulanModal('tryout')">
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-clipboard-check text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Try Out Rutin</h3>
-                    <p class="text-gray-600 text-sm">Latihan soal berkala</p>
-                </div>
+                <!-- AKAN DIISI OLEH JAVASCRIPT -->
             </div>
         </div>
     </section>
@@ -510,21 +402,7 @@
                 <p class="text-gray-600 mt-4">Program untuk membangun hubungan dengan orang tua dan siswa</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" id="relasi-container">
-                <!-- HARDCODE -->
-                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showRelasiModal('tryout')">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Try Out Online" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Try Out Online</h3>
-                        <p class="text-gray-600">Akses try out kapan saja dan di mana saja</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden hover-lift cursor-pointer" onclick="showRelasiModal('meeting')">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="Parent Meeting" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Parent Meeting</h3>
-                        <p class="text-gray-600">Pertemuan rutin dengan orang tua siswa</p>
-                    </div>
-                </div>
+                <!-- AKAN DIISI OLEH JAVASCRIPT -->
             </div>
         </div>
     </section>
@@ -538,41 +416,11 @@
                 <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Blog & Artikel</h2>
                 <p class="text-gray-600 mt-4">Tips belajar dan informasi pendidikan</p>
             </div>
+            <div id="blog-loading" class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-container">
-                <!-- HARDCODE -->
-                <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop" alt="Artikel 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="text-sm text-teal-600 mb-2">15 Juni 2026</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tips Sukses UTBK 2026</h3>
-                        <p class="text-gray-600 text-sm mb-4 blog-preview">Strategi persiapan UTBK yang efektif untuk masuk PTN impian. Pelajari tips dari para ahli dan alumni yang berhasil.</p>
-                        <button onclick="showArticleModal('1')" class="text-teal-600 font-medium hover:text-teal-800 transition">
-                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                </article>
-                <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop" alt="Artikel 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="text-sm text-teal-600 mb-2">10 Juni 2026</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Cara Belajar Matematika Efektif</h3>
-                        <p class="text-gray-600 text-sm mb-4 blog-preview">Metode pembelajaran matematika yang mudah dipahami. Temukan cara belajar yang menyenangkan dan tidak membosankan.</p>
-                        <button onclick="showArticleModal('2')" class="text-teal-600 font-medium hover:text-teal-800 transition">
-                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                </article>
-                <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
-                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop" alt="Artikel 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="text-sm text-teal-600 mb-2">5 Juni 2026</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Memilih Jurusan yang Tepat</h3>
-                        <p class="text-gray-600 text-sm mb-4 blog-preview">Panduan memilih jurusan sesuai minat dan bakat. Konsultasi dengan ahli untuk masa depan yang cerah.</p>
-                        <button onclick="showArticleModal('3')" class="text-teal-600 font-medium hover:text-teal-800 transition">
-                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                </article>
+                <!-- AKAN DIISI OLEH JAVASCRIPT -->
             </div>
         </div>
     </section>
@@ -589,93 +437,21 @@
             
             <div class="mb-12">
                 <h3 class="text-2xl font-bold text-gray-800 mb-6">Video Pembelajaran</h3>
+                <div id="video-loading" class="loading-spinner">
+                    <div class="spinner"></div>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-container">
-                    <!-- HARDCODE -->
-                    <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop" alt="Video 1" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <i class="fas fa-play-circle text-white text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h4 class="font-bold text-gray-800 mb-2">Matematika Dasar: Aljabar</h4>
-                            <p class="text-sm text-gray-600">Gratis</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=250&fit=crop" alt="Video 2" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <i class="fas fa-play-circle text-white text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h4 class="font-bold text-gray-800 mb-2">Fisika: Hukum Newton</h4>
-                            <p class="text-sm text-gray-600">Gratis</p>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 rounded-2xl shadow-lg overflow-hidden relative">
-                        <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold z-10">
-                            <i class="fas fa-lock mr-1"></i>PREMIUM
-                        </div>
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=250&fit=crop" alt="Video Premium" class="w-full h-48 object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-                                <i class="fas fa-lock text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h4 class="font-bold text-gray-800 mb-2">Kimia Organik Lengkap</h4>
-                            <p class="text-sm text-teal-600 font-medium">Khusus Member</p>
-                        </div>
-                    </div>
+                    <!-- AKAN DIISI OLEH JAVASCRIPT -->
                 </div>
             </div>
             
             <div>
                 <h3 class="text-2xl font-bold text-gray-800 mb-6">Modul Pembelajaran</h3>
+                <div id="modul-loading" class="loading-spinner">
+                    <div class="spinner"></div>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modul-container">
-                    <!-- HARDCODE -->
-                    <div class="bg-gray-50 rounded-2xl shadow-lg p-6">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Modul Matematika SD</h4>
-                                <p class="text-sm text-gray-600">Kelas 4-6</p>
-                            </div>
-                        </div>
-                        <button class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition">
-                            <i class="fas fa-download mr-2"></i>Download
-                        </button>
-                    </div>
-                    <div class="bg-gray-50 rounded-2xl shadow-lg p-6">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Modul Fisika SMP</h4>
-                                <p class="text-sm text-gray-600">Kelas 7-9</p>
-                            </div>
-                        </div>
-                        <button class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition">
-                            <i class="fas fa-download mr-2"></i>Download
-                        </button>
-                    </div>
-                    <div class="bg-gray-50 rounded-2xl shadow-lg p-6 relative">
-                        <div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
-                            <i class="fas fa-lock mr-1"></i>PREMIUM
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Modul UTBK Lengkap</h4>
-                                <p class="text-sm text-gray-600">Semua Mata Pelajaran</p>
-                            </div>
-                        </div>
-                        <button class="w-full bg-gray-400 text-white py-2 rounded-lg cursor-not-allowed">
-                            <i class="fas fa-lock mr-2"></i>Khusus Member
-                        </button>
-                    </div>
+                    <!-- AKAN DIISI OLEH JAVASCRIPT -->
                 </div>
             </div>
         </div>
@@ -691,36 +467,7 @@
                 <p class="mt-4 opacity-90">Kami siap membantu Anda</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" id="kontak-container">
-                <!-- Telepon -->
-                <div class="glass rounded-2xl p-6 text-center contact-card">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-phone text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Telepon</h3>
-                    <p class="opacity-90">0851-1770-5334</p>
-                </div>
-                
-                <!-- WhatsApp - PAKE ICON + EMOJI FALLBACK -->
-                <div class="glass rounded-2xl p-6 text-center contact-card bg-[#25D366]/20 backdrop-blur-sm border border-white/10">
-                    <div class="w-16 h-16 wa-icon-wrapper rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg hover:shadow-2xl">
-                        <i class="fab fa-whatsapp text-white text-3xl" id="waIcon"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-                    <p class="opacity-90">0851-1770-5334</p>
-                    <a href="https://wa.me/6285117705334" target="_blank" 
-                       class="mt-3 inline-block bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-full text-sm font-medium transition">
-                        <span class="inline-block mr-1">💬</span> Chat Sekarang
-                    </a>
-                </div>
-                
-                <!-- Email -->
-                <div class="glass rounded-2xl p-6 text-center contact-card">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-envelope text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Email</h3>
-                    <p class="opacity-90">info@alphabest.id</p>
-                </div>
+                <!-- AKAN DIISI OLEH JAVASCRIPT -->
             </div>
             <div class="mt-8 text-center">
                 <div class="flex justify-center space-x-4">
@@ -942,18 +689,194 @@
             webAppUrl: 'https://script.google.com/macros/s/AKfycbw0X03VPlnMv_9-OYF2IKB3OJK6qSjzWq2FxTl5ISaDhcBizHNBW2NRRlCOtTXlM73Bvg/exec',
             logoUrl: 'https://i.imgur.com/zO2eZe9.png',
             sheets: {
-                program: 'program',
-                cabang: 'cabang',
-                keunggulan: 'keunggulan',
-                relasi: 'relasi',
                 blog: 'blog',
-                tentang: 'tentang',
-                hero: 'hero',
-                kontak: 'kontak',
                 video: 'video_pembelajaran',
-                modul: 'modul',
-                footer: 'footer',
-                karier: 'karier'
+                modul: 'modul'
+            }
+        };
+
+        // ============================================================
+        // HARDCODE DATA - KONTEN STATIS YANG JARANG BERUBAH
+        // ============================================================
+        const HARDCODE_DATA = {
+            hero: {
+                judul: 'Pahami Soal Sampai Ke Dasar',
+                sub_judul: 'Bimbel terpercaya sejak 2020. Dibimbing oleh pengajar profesional dengan pengalaman puluhan tahun.',
+                gambar: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop'
+            },
+            tentang: {
+                judul: 'Bimbel AlphaBest',
+                deskripsi: 'Berdiri sejak tahun 2020 di Tambun, AlphaBest memulai kegiatannya sebagai bimbel rumahan. Dengan dedikasi dan kualitas pengajaran yang tinggi, kami berkembang menjadi beberapa cabang di Bekasi.',
+                gambar: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=400&fit=crop',
+                cabang: '4+',
+                siswa: '500+',
+                pengajar: '20+',
+                tahun: '2020'
+            },
+            program: [
+                {
+                    id: 'sd',
+                    judul: 'Kelas 4-6 SD',
+                    deskripsi: 'Persiapan ujian dan penguatan dasar matematika, IPA, dan bahasa',
+                    gambar: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop',
+                    detail: 'Program khusus untuk siswa SD kelas 4-6. Fokus pada pemahaman konsep dasar matematika, IPA, dan Bahasa Indonesia. Dilengkapi dengan latihan soal dan evaluasi berkala.'
+                },
+                {
+                    id: 'smp',
+                    judul: 'Kelas 7-9 SMP',
+                    deskripsi: 'Persiapan ujian nasional dan penguatan konsep dasar',
+                    gambar: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop',
+                    detail: 'Program untuk siswa SMP kelas 7-9. Persiapan menghadapi ujian nasional dengan penguatan konsep dasar semua mata pelajaran.'
+                },
+                {
+                    id: 'sma',
+                    judul: 'Kelas 10-12 SMA',
+                    deskripsi: 'Persiapan UTBK dan pendalaman materi sesuai jurusan',
+                    gambar: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop',
+                    detail: 'Program untuk siswa SMA kelas 10-12. Pendalaman materi sesuai jurusan dan persiapan intensif untuk UTBK.'
+                },
+                {
+                    id: 'tka',
+                    judul: 'Intensif TKA',
+                    deskripsi: 'Program intensif Tes Kompetensi Akademik',
+                    gambar: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop',
+                    detail: 'Program intensif khusus persiapan Tes Kompetensi Akademik (TKA) untuk masuk perguruan tinggi.'
+                },
+                {
+                    id: 'utbk',
+                    judul: 'Intensif UTBK',
+                    deskripsi: 'Persiapan maksimal untuk UTBK SNBT',
+                    gambar: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop',
+                    detail: 'Program persiapan maksimal untuk UTBK SNBT dengan materi lengkap dan try out rutin.'
+                }
+            ],
+            cabang: [
+                {
+                    id: 'tambun',
+                    nama: 'Tambun',
+                    label: 'Cabang Utama',
+                    gambar: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop',
+                    alamat: 'Jl. Raya Tambun No. 123, Tambun, Bekasi',
+                    telepon: '0851-1770-5334',
+                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
+                },
+                {
+                    id: 'alinda',
+                    nama: 'Alinda',
+                    label: 'Cabang Baru',
+                    gambar: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop',
+                    alamat: 'Jl. Alinda Raya No. 45, Bekasi',
+                    telepon: '0851-1770-5334',
+                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
+                },
+                {
+                    id: 'bekasi',
+                    nama: 'Bekasi Timur Regency',
+                    label: 'Cabang Premium',
+                    gambar: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop',
+                    alamat: 'Bekasi Timur Regency Blok A No. 7, Bekasi',
+                    telepon: '0851-1770-5334',
+                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
+                },
+                {
+                    id: 'rawa',
+                    nama: 'Rawa Lumbu',
+                    label: 'Cabang Terbaru',
+                    gambar: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop',
+                    alamat: 'Jl. Rawa Lumbu No. 78, Bekasi',
+                    telepon: '0851-1770-5334',
+                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
+                }
+            ],
+            keunggulan: [
+                {
+                    id: 'fundamath',
+                    judul: 'Fundamath',
+                    deskripsi: 'Metode pembelajaran matematika dari dasar',
+                    icon: 'fa-calculator',
+                    detail: 'Metode Fundamath adalah pendekatan pembelajaran matematika yang dimulai dari konsep paling dasar hingga level lanjutan. Siswa diajak memahami "mengapa" dan "bagaimana" dari setiap rumus dan konsep.'
+                },
+                {
+                    id: 'psikotest',
+                    judul: 'Psikotest Berkala',
+                    deskripsi: 'Tes psikologi rutin untuk perkembangan siswa',
+                    icon: 'fa-brain',
+                    detail: 'Psikotest berkala dilakukan untuk memantau perkembangan mental dan emosional siswa. Hasil tes digunakan untuk menyesuaikan metode pembelajaran yang paling sesuai.'
+                },
+                {
+                    id: 'konsul',
+                    judul: 'Konsul Jurusan',
+                    deskripsi: 'Konsultasi pemilihan jurusan yang tepat',
+                    icon: 'fa-comments',
+                    detail: 'Layanan konsultasi jurusan untuk membantu siswa dan orang tua menentukan pilihan jurusan yang sesuai dengan minat, bakat, dan kemampuan siswa.'
+                },
+                {
+                    id: 'app',
+                    judul: 'Super App',
+                    deskripsi: 'Aplikasi pembelajaran lengkap',
+                    icon: 'fa-mobile-alt',
+                    detail: 'Aplikasi pembelajaran yang memudahkan siswa mengakses materi, latihan soal, dan video pembelajaran kapan saja dan di mana saja.'
+                },
+                {
+                    id: 'modul',
+                    judul: 'Modul Lengkap',
+                    deskripsi: 'Materi pembelajaran terstruktur',
+                    icon: 'fa-book',
+                    detail: 'Modul pembelajaran lengkap dan terstruktur untuk semua jenjang pendidikan. Disusun oleh tim pengajar berpengalaman.'
+                },
+                {
+                    id: 'laporan',
+                    judul: 'Laporan Belajar',
+                    deskripsi: 'Progress belajar siswa terpantau',
+                    icon: 'fa-chart-line',
+                    detail: 'Laporan belajar rutin yang memudahkan orang tua memantau progress dan perkembangan akademik anak secara transparan.'
+                },
+                {
+                    id: 'tryout',
+                    judul: 'Try Out Rutin',
+                    deskripsi: 'Latihan soal berkala',
+                    icon: 'fa-clipboard-check',
+                    detail: 'Try out rutin untuk mengukur kemampuan siswa dan membiasakan mereka dengan suasana ujian yang sebenarnya.'
+                }
+            ],
+            relasi: [
+                {
+                    id: 'tryout',
+                    judul: 'Try Out Online',
+                    deskripsi: 'Akses try out kapan saja dan di mana saja',
+                    gambar: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop',
+                    detail: 'Try out online yang dapat diakses kapan saja dan di mana saja. Dilengkapi dengan pembahasan dan analisis hasil untuk evaluasi belajar.'
+                },
+                {
+                    id: 'meeting',
+                    judul: 'Parent Meeting',
+                    deskripsi: 'Pertemuan rutin dengan orang tua siswa',
+                    gambar: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop',
+                    detail: 'Parent meeting rutin untuk membahas perkembangan akademik dan non-akademik siswa. Kolaborasi antara sekolah, bimbel, dan orang tua untuk mendukung kesuksesan siswa.'
+                }
+            ],
+            kontak: [
+                {
+                    judul: 'Telepon',
+                    detail: '0851-1770-5334',
+                    icon: 'fa-phone'
+                },
+                {
+                    judul: 'WhatsApp',
+                    detail: '0851-1770-5334',
+                    icon: 'fa-whatsapp'
+                },
+                {
+                    judul: 'Email',
+                    detail: 'info@alphabest.id',
+                    icon: 'fa-envelope'
+                }
+            ],
+            footer: {
+                judul: 'AlphaBest',
+                deskripsi: 'Bimbel Terpercaya',
+                tagline: 'Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.',
+                tahun: '2026'
             }
         };
 
@@ -997,7 +920,7 @@
         });
 
         // ============================================================
-        // AMBIL DATA DARI GOOGLE SHEETS
+        // AMBIL DATA DARI GOOGLE SHEETS (HANYA UNTUK KONTEN DINAMIS)
         // ============================================================
         async function fetchSheetData(sheetName) {
             try {
@@ -1018,58 +941,48 @@
         }
 
         // ============================================================
-        // RENDER FUNCTIONS
+        // RENDER FUNCTIONS - KONTEN STATIS (HARDCODE)
         // ============================================================
 
         function renderHeader(data) {
             if (!data) return;
-            const brand = getValueByKey(data, 'judul');
-            const sub = getValueByKey(data, 'deskripsi');
-            if (brand) {
-                document.getElementById('brand-name').textContent = brand;
-                document.getElementById('footer-brand').textContent = brand;
-            }
-            if (sub) {
-                document.getElementById('brand-sub').textContent = sub;
-                document.getElementById('footer-sub').textContent = sub;
-            }
-            const tagline = getValueByKey(data, 'tagline');
-            if (tagline) document.getElementById('footer-tagline').textContent = tagline;
-            const tahun = getValueByKey(data, 'tahun');
-            if (tahun) document.getElementById('footer-copyright').textContent = `© ${tahun} AlphaBest Bimbel. All rights reserved.`;
+            const brand = data.judul || 'AlphaBest';
+            const sub = data.deskripsi || 'Bimbel Terpercaya';
+            const tagline = data.tagline || 'Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.';
+            const tahun = data.tahun || '2026';
+            
+            document.getElementById('brand-name').textContent = brand;
+            document.getElementById('footer-brand').textContent = brand;
+            document.getElementById('brand-sub').textContent = sub;
+            document.getElementById('footer-sub').textContent = sub;
+            document.getElementById('footer-tagline').textContent = tagline;
+            document.getElementById('footer-copyright').textContent = `© ${tahun} AlphaBest Bimbel. All rights reserved.`;
         }
 
         function renderHero(data) {
-            if (!data || data.length === 0) return;
-            const hero = data[0];
-            if (!hero) return;
+            if (!data) return;
             const titleEl = document.getElementById('hero-title');
-            if (hero.judul) {
-                const parts = hero.judul.split(' ');
-                const lastWord = parts.pop();
-                titleEl.innerHTML = parts.join(' ') + ' <span class="text-yellow-300">' + lastWord + '</span>';
-            }
-            if (hero.sub_judul) document.getElementById('hero-subtitle').textContent = hero.sub_judul;
-            if (hero.gambar) document.getElementById('hero-image').src = hero.gambar;
+            const judul = data.judul || 'Pahami Soal Sampai Ke Dasar';
+            const parts = judul.split(' ');
+            const lastWord = parts.pop();
+            titleEl.innerHTML = parts.join(' ') + ' <span class="text-yellow-300">' + lastWord + '</span>';
+            
+            document.getElementById('hero-subtitle').textContent = data.sub_judul || 'Bimbel terpercaya sejak 2020. Dibimbing oleh pengajar profesional dengan pengalaman puluhan tahun.';
+            document.getElementById('hero-image').src = data.gambar || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop';
         }
 
         function renderTentang(data) {
-            if (!data || data.length === 0) return;
-            const judul = getValueByKey(data, 'judul');
-            const deskripsi = getValueByKey(data, 'deskripsi');
-            const gambar = getValueByKey(data, 'gambar');
-            const cabang = getValueByKey(data, 'cabang');
-            const siswa = getValueByKey(data, 'siswa');
-            const pengajar = getValueByKey(data, 'pengajar');
-            const tahun = getValueByKey(data, 'tahun');
-            if (judul) document.getElementById('tentang-judul').textContent = judul;
-            if (deskripsi) document.getElementById('tentang-deskripsi').textContent = deskripsi;
-            if (gambar) document.getElementById('tentang-image').src = gambar;
-            if (cabang) document.getElementById('stat-cabang').textContent = cabang;
-            if (siswa) document.getElementById('stat-siswa').textContent = siswa;
-            if (pengajar) document.getElementById('stat-pengajar').textContent = pengajar;
-            if (tahun) {
-                const tahunNum = parseInt(tahun);
+            if (!data) return;
+            document.getElementById('tentang-judul').textContent = data.judul || 'Bimbel AlphaBest';
+            document.getElementById('tentang-deskripsi').textContent = data.deskripsi || 'Berdiri sejak tahun 2020 di Tambun, AlphaBest memulai kegiatannya sebagai bimbel rumahan.';
+            document.getElementById('tentang-image').src = data.gambar || 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=400&fit=crop';
+            
+            document.getElementById('stat-cabang').textContent = data.cabang || '4+';
+            document.getElementById('stat-siswa').textContent = data.siswa || '500+';
+            document.getElementById('stat-pengajar').textContent = data.pengajar || '20+';
+            
+            if (data.tahun) {
+                const tahunNum = parseInt(data.tahun);
                 const sekarang = new Date().getFullYear();
                 document.getElementById('stat-tahun').textContent = (sekarang - tahunNum) + '+';
             }
@@ -1096,6 +1009,7 @@
                 container.appendChild(card);
             });
             
+            // Update desktop dropdown
             const desktopDropdown = document.getElementById('desktop-program-dropdown');
             if (desktopDropdown) {
                 desktopDropdown.innerHTML = '';
@@ -1108,6 +1022,7 @@
                 });
             }
 
+            // Update mobile menu
             const mobileMenu = document.getElementById('mobile-program-menu');
             if (mobileMenu) {
                 const label = mobileMenu.querySelector('.sub-label');
@@ -1163,6 +1078,7 @@
                 container.appendChild(card);
             });
 
+            // Update mobile menu
             const mobileMenu = document.getElementById('mobile-keunggulan-menu');
             if (mobileMenu) {
                 const label = mobileMenu.querySelector('.sub-label');
@@ -1198,6 +1114,7 @@
                 container.appendChild(card);
             });
 
+            // Update mobile menu
             const mobileMenu = document.getElementById('mobile-relasi-menu');
             if (mobileMenu) {
                 const label = mobileMenu.querySelector('.sub-label');
@@ -1213,12 +1130,71 @@
             }
         }
 
+        function renderKontak(data) {
+            const container = document.getElementById('kontak-container');
+            if (!data || data.length === 0 || !container) return;
+            
+            container.innerHTML = '';
+            data.forEach(item => {
+                const isWA = item.judul === 'WhatsApp';
+                const card = document.createElement('div');
+                card.className = `glass rounded-2xl p-6 text-center contact-card ${isWA ? 'bg-[#25D366]/20 backdrop-blur-sm border border-white/10' : ''}`;
+                
+                let iconHtml = '';
+                if (isWA) {
+                    iconHtml = `
+                        <div class="w-16 h-16 wa-icon-wrapper rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                            <i class="fab fa-whatsapp text-white text-3xl" id="waIcon"></i>
+                        </div>
+                    `;
+                } else {
+                    iconHtml = `
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas ${item.icon || 'fa-phone'} text-white text-2xl"></i>
+                        </div>
+                    `;
+                }
+                
+                let actionHtml = '';
+                if (isWA) {
+                    actionHtml = `
+                        <a href="https://wa.me/6285117705334" target="_blank" 
+                           class="mt-3 inline-block bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-full text-sm font-medium transition">
+                            <span class="inline-block mr-1">💬</span> Chat Sekarang
+                        </a>
+                    `;
+                }
+                
+                card.innerHTML = `
+                    ${iconHtml}
+                    <h3 class="text-xl font-bold mb-2">${item.judul}</h3>
+                    <p class="opacity-90">${item.detail || ''}</p>
+                    ${actionHtml}
+                `;
+                container.appendChild(card);
+            });
+        }
+
         // ============================================================
-        // RENDER BLOG - PREVIEW 30 KATA + POPUP LAYOUT MAJALAH
+        // RENDER FUNCTIONS - KONTEN DINAMIS (DARI GOOGLE SHEETS)
         // ============================================================
+
         function renderBlog(data) {
             const container = document.getElementById('blog-container');
-            if (!data || data.length === 0 || !container) return;
+            const loading = document.getElementById('blog-loading');
+            
+            if (loading) loading.style.display = 'none';
+            if (!container) return;
+            
+            if (!data || data.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-8 text-gray-500">
+                        <i class="fas fa-newspaper text-4xl mb-3 text-gray-300"></i>
+                        <p>Belum ada artikel. Cek lagi nanti ya!</p>
+                    </div>
+                `;
+                return;
+            }
             
             container.innerHTML = '';
             data.forEach(article => {
@@ -1246,51 +1222,22 @@
             });
         }
 
-        // ============================================================
-        // FUNGSI MODAL ARTIKEL - LAYOUT MAJALAH
-        // ============================================================
-        function showArticleModal(id) {
-            const data = dataCache.blog || [];
-            const article = data.find(a => a.id == id);
-            if (!article) {
-                showModal(`<p class="text-gray-600">Artikel tidak ditemukan</p>`);
-                return;
-            }
-            
-            const fullText = article.deskripsi || '';
-            const paragraphs = fullText.split('\n').filter(p => p.trim() !== '');
-            
-            let contentHtml = '';
-            paragraphs.forEach(p => {
-                contentHtml += `<p class="text-gray-700 mb-3 leading-relaxed">${p}</p>`;
-            });
-            
-            showModal(`
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="md:w-2/5">
-                        <img src="${article.gambar || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop'}" 
-                             alt="${article.judul}" 
-                             class="w-full rounded-xl object-cover aspect-[4/3]">
-                        <div class="mt-3 text-sm text-gray-500">
-                            <i class="far fa-calendar-alt mr-1"></i> ${article.tanggal || ''}
-                        </div>
-                    </div>
-                    <div class="md:w-3/5">
-                        <h2 class="text-2xl font-bold gradient-text mb-3">${article.judul}</h2>
-                        <div class="prose prose-sm max-w-none text-gray-700">
-                            ${contentHtml}
-                        </div>
-                    </div>
-                </div>
-            `);
-        }
-
-        // ============================================================
-        // RENDER VIDEO
-        // ============================================================
         function renderVideo(data) {
             const container = document.getElementById('video-container');
-            if (!data || data.length === 0 || !container) return;
+            const loading = document.getElementById('video-loading');
+            
+            if (loading) loading.style.display = 'none';
+            if (!container) return;
+            
+            if (!data || data.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-8 text-gray-500">
+                        <i class="fas fa-video text-4xl mb-3 text-gray-300"></i>
+                        <p>Belum ada video. Cek lagi nanti ya!</p>
+                    </div>
+                `;
+                return;
+            }
             
             container.innerHTML = '';
             data.forEach(video => {
@@ -1362,15 +1309,22 @@
             });
         }
 
-        function showPremiumAlert(judul) {
-            const noWA = '6285117705334';
-            const pesan = `Halo AlphaBest! Saya ingin mengakses video premium: *${judul}*. Bagaimana cara mendapatkannya?`;
-            window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`, '_blank');
-        }
-
         function renderModul(data) {
             const container = document.getElementById('modul-container');
-            if (!data || data.length === 0 || !container) return;
+            const loading = document.getElementById('modul-loading');
+            
+            if (loading) loading.style.display = 'none';
+            if (!container) return;
+            
+            if (!data || data.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-8 text-gray-500">
+                        <i class="fas fa-file-pdf text-4xl mb-3 text-gray-300"></i>
+                        <p>Belum ada modul. Cek lagi nanti ya!</p>
+                    </div>
+                `;
+                return;
+            }
             
             container.innerHTML = '';
             data.forEach(modul => {
@@ -1402,29 +1356,56 @@
             });
         }
 
-        function renderKontak(data) {
-            const container = document.getElementById('kontak-container');
-            if (!data || data.length === 0 || !container) return;
+        // ============================================================
+        // FUNGSI MODAL ARTIKEL - LAYOUT MAJALAH
+        // ============================================================
+        let dataCache = {};
+
+        function showArticleModal(id) {
+            const data = dataCache.blog || [];
+            const article = data.find(a => a.id == id);
+            if (!article) {
+                showModal(`<p class="text-gray-600">Artikel tidak ditemukan</p>`);
+                return;
+            }
             
-            container.innerHTML = '';
-            data.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'glass rounded-2xl p-6 text-center contact-card';
-                card.innerHTML = `
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas ${item.icon || 'fa-phone'} text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">${item.judul}</h3>
-                    <p class="opacity-90">${item.detail || ''}</p>
-                `;
-                container.appendChild(card);
+            const fullText = article.deskripsi || '';
+            const paragraphs = fullText.split('\n').filter(p => p.trim() !== '');
+            
+            let contentHtml = '';
+            paragraphs.forEach(p => {
+                contentHtml += `<p class="text-gray-700 mb-3 leading-relaxed">${p}</p>`;
             });
+            
+            showModal(`
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-2/5">
+                        <img src="${article.gambar || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop'}" 
+                             alt="${article.judul}" 
+                             class="w-full rounded-xl object-cover aspect-[4/3]">
+                        <div class="mt-3 text-sm text-gray-500">
+                            <i class="far fa-calendar-alt mr-1"></i> ${article.tanggal || ''}
+                        </div>
+                    </div>
+                    <div class="md:w-3/5">
+                        <h2 class="text-2xl font-bold gradient-text mb-3">${article.judul}</h2>
+                        <div class="prose prose-sm max-w-none text-gray-700">
+                            ${contentHtml}
+                        </div>
+                    </div>
+                </div>
+            `);
+        }
+
+        function showPremiumAlert(judul) {
+            const noWA = '6285117705334';
+            const pesan = `Halo AlphaBest! Saya ingin mengakses video premium: *${judul}*. Bagaimana cara mendapatkannya?`;
+            window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`, '_blank');
         }
 
         // ============================================================
         // MODAL FUNCTIONS
         // ============================================================
-        let dataCache = {};
 
         function showModal(content) {
             document.getElementById('modal-body').innerHTML = content;
@@ -1442,7 +1423,7 @@
         });
 
         function showProgramModal(id) {
-            const data = dataCache.program || [];
+            const data = HARDCODE_DATA.program || [];
             const item = data.find(p => p.id === id);
             if (item) {
                 showModal(`
@@ -1452,24 +1433,12 @@
                     <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
                 `);
             } else {
-                const fallback = {
-                    sd: { judul: 'Kelas 4-6 SD', detail: 'Program untuk SD...' },
-                    smp: { judul: 'Kelas 7-9 SMP', detail: 'Program untuk SMP...' },
-                    sma: { judul: 'Kelas 10-12 SMA', detail: 'Program untuk SMA...' },
-                    tka: { judul: 'Intensif TKA', detail: 'Program TKA...' },
-                    utbk: { judul: 'Intensif UTBK', detail: 'Program UTBK...' }
-                };
-                const fb = fallback[id];
-                if (fb) {
-                    showModal(`<h2 class="text-2xl font-bold gradient-text mb-4">${fb.judul}</h2><p class="text-gray-600">${fb.detail}</p>`);
-                } else {
-                    showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
-                }
+                showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
             }
         }
 
         function showCabangModal(id) {
-            const data = dataCache.cabang || [];
+            const data = HARDCODE_DATA.cabang || [];
             const item = data.find(c => c.id === id);
             if (item) {
                 showModal(`
@@ -1497,7 +1466,7 @@
         }
 
         function showKeunggulanModal(id) {
-            const data = dataCache.keunggulan || [];
+            const data = HARDCODE_DATA.keunggulan || [];
             const item = data.find(k => k.id === id);
             if (item) {
                 showModal(`
@@ -1513,7 +1482,7 @@
         }
 
         function showRelasiModal(id) {
-            const data = dataCache.relasi || [];
+            const data = HARDCODE_DATA.relasi || [];
             const item = data.find(r => r.id === id);
             if (item) {
                 showModal(`
@@ -1580,15 +1549,12 @@
         // FIX WHATSAPP ICON - FALLBACK PAKE EMOJI KALO ICON GAK LOAD
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Cek apakah Font Awesome berhasil load
             setTimeout(function() {
                 const waIcon = document.getElementById('waIcon');
                 if (waIcon) {
                     const computedStyle = window.getComputedStyle(waIcon, '::before');
                     const content = computedStyle.getPropertyValue('content');
-                    // Kalo content kosong atau cuma "", berarti icon gak load
                     if (!content || content === '""' || content === 'none') {
-                        // Ganti dengan emoji
                         waIcon.className = '';
                         waIcon.textContent = '💬';
                         waIcon.style.fontSize = '2rem';
@@ -1599,56 +1565,58 @@
         });
 
         // ============================================================
-        // LOAD DATA
+        // LOAD DATA - STRATEGI HYBRID
         // ============================================================
         async function loadAllData() {
-            console.log('🔄 Memuat data dari Google Sheets...');
+            console.log('🚀 Memuat data dengan strategi Hybrid (Hardcode + Dinamis)...');
+            
+            // ===== FASE 1: INSTANT - RENDER SEMUA HARDCODE =====
+            console.log('📦 Fase 1: Render hardcode (instant)...');
+            
+            renderHeader(HARDCODE_DATA.footer);
+            renderHero(HARDCODE_DATA.hero);
+            renderTentang(HARDCODE_DATA.tentang);
+            renderProgram(HARDCODE_DATA.program);
+            renderCabang(HARDCODE_DATA.cabang);
+            renderKeunggulan(HARDCODE_DATA.keunggulan);
+            renderRelasi(HARDCODE_DATA.relasi);
+            renderKontak(HARDCODE_DATA.kontak);
+            
+            console.log('✅ Hardcode selesai! Web langsung muncul.');
+            
+            // ===== FASE 2: BACKGROUND - LOAD KONTEN DINAMIS =====
+            console.log('🔄 Fase 2: Load konten dinamis dari Google Sheets...');
             
             try {
-                const [program, cabang, keunggulan, relasi, blog, tentang, hero, kontak, video, modul, footer] = await Promise.all([
-                    fetchSheetData(SHEET_CONFIG.sheets.program),
-                    fetchSheetData(SHEET_CONFIG.sheets.cabang),
-                    fetchSheetData(SHEET_CONFIG.sheets.keunggulan),
-                    fetchSheetData(SHEET_CONFIG.sheets.relasi),
+                const [blog, video, modul] = await Promise.all([
                     fetchSheetData(SHEET_CONFIG.sheets.blog),
-                    fetchSheetData(SHEET_CONFIG.sheets.tentang),
-                    fetchSheetData(SHEET_CONFIG.sheets.hero),
-                    fetchSheetData(SHEET_CONFIG.sheets.kontak),
                     fetchSheetData(SHEET_CONFIG.sheets.video),
-                    fetchSheetData(SHEET_CONFIG.sheets.modul),
-                    fetchSheetData(SHEET_CONFIG.sheets.footer)
+                    fetchSheetData(SHEET_CONFIG.sheets.modul)
                 ]);
-
-                dataCache.program = program;
-                dataCache.cabang = cabang;
-                dataCache.keunggulan = keunggulan;
-                dataCache.relasi = relasi;
+                
+                // Simpan di cache untuk modal
                 dataCache.blog = blog;
-                dataCache.tentang = tentang;
-                dataCache.hero = hero;
-                dataCache.kontak = kontak;
                 dataCache.video = video;
                 dataCache.modul = modul;
-                dataCache.footer = footer;
-
-                renderHeader(footer);
-                renderHero(hero);
-                renderTentang(tentang);
-                renderProgram(program);
-                renderCabang(cabang);
-                renderKeunggulan(keunggulan);
-                renderRelasi(relasi);
+                
+                // Render konten dinamis
                 renderBlog(blog);
                 renderVideo(video);
                 renderModul(modul);
-                renderKontak(kontak);
-
-                console.log('✅ Data berhasil dimuat!');
-                document.body.classList.add('data-loaded');
-
+                
+                console.log('✅ Data dinamis berhasil dimuat!');
+                console.log(`📊 Statistik: Blog=${blog?.length || 0}, Video=${video?.length || 0}, Modul=${modul?.length || 0}`);
+                
             } catch (error) {
-                console.error('❌ Gagal memuat data:', error);
+                console.warn('⚠️ Gagal load data dinamis, menggunakan fallback kosong:', error);
+                
+                // Tampilkan pesan kosong dengan loading state hilang
+                renderBlog([]);
+                renderVideo([]);
+                renderModul([]);
             }
+            
+            console.log('🎉 Semua data selesai dimuat!');
         }
 
         // ============================================================
