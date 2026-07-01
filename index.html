@@ -6,7 +6,6 @@
     <title>AlphaBest Bimbel - Pahami Soal Sampai Ke Dasar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- ===== FONT AWESOME - PAKE 2 CDN BIAR AMAN ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
     
@@ -28,7 +27,6 @@
         .section-title { position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: linear-gradient(135deg, #00A8B5 0%, #1B3A5C 100%); border-radius: 2px; }
 
-        /* ===== HEADER ===== */
         .nav-desktop { display: flex; align-items: center; gap: 1.5rem; }
         .nav-desktop a { color: #374151; font-weight: 500; transition: color 0.2s; text-decoration: none; }
         .nav-desktop a:hover { color: #0d9488; }
@@ -38,7 +36,6 @@
         .hamburger-btn { background: none; border: none; font-size: 1.5rem; color: #374151; cursor: pointer; padding: 0.5rem; display: block; }
         .hamburger-btn:hover { color: #0d9488; }
 
-        /* Dropdown - toggle klik */
         .dropdown-wrapper { position: relative; }
         .dropdown-wrapper .dropdown-trigger {
             background: none;
@@ -85,7 +82,6 @@
         .dropdown-wrapper .dropdown-list a:hover { background: #f0fdfa; color: #0d9488; }
         .dropdown-wrapper .dropdown-list a i { color: #0d9488; width: 1.25rem; }
 
-        /* Mobile Menu */
         .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 999; }
         .mobile-menu-overlay.active { display: block; }
         .mobile-menu {
@@ -124,25 +120,6 @@
             .nav-desktop { display: flex; }
         }
 
-        /* Blog card - text clamp */
-        .blog-preview {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .loading-spinner { display: flex; justify-content: center; align-items: center; padding: 40px; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #00A8B5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* Modal article - responsive */
-        @media (max-width: 768px) {
-            .modal-content { padding: 1.5rem; }
-            .modal-content .flex { flex-direction: column; }
-        }
-
-        /* ===== WHATSAPP ICON - FIX BIAR KELIATAN ===== */
         .wa-icon-wrapper {
             background: #25D366 !important;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5) !important;
@@ -154,13 +131,11 @@
             border-color: white !important;
         }
         
-        /* ===== FALLBACK BUAT ICON YANG GAK LOAD ===== */
         .fa-whatsapp::before {
             content: "\f232" !important;
             font-family: "Font Awesome 6 Brands" !important;
         }
         
-        /* ===== CONTACT CARD - BIAR LEBIH KEREN ===== */
         .contact-card {
             transition: all 0.3s ease;
         }
@@ -168,40 +143,38 @@
             transform: translateY(-5px);
         }
 
-        /* ===== FORM PENDAFTARAN ===== */
         .form-google-iframe {
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-        /* ===== LOADING STATE UNTUK KONTEN DINAMIS ===== */
-        .content-loading {
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-        .content-loaded {
-            opacity: 1;
+        .loading-spinner { display: flex; justify-content: center; align-items: center; padding: 40px; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #00A8B5; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .modal-content { padding: 1.5rem; }
+            .modal-content .flex { flex-direction: column; }
         }
     </style>
 </head>
 <body class="bg-gray-50">
 
-    <!-- ============================================================ -->
-    <!-- HEADER -->
-    <!-- ============================================================ -->
+    <!-- ===== HEADER ===== -->
     <header class="fixed top-0 left-0 right-0 z-50 glass bg-white/90 shadow-lg">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
-                <a href="#beranda" class="flex items-center space-x-3">
-                    <img id="logo-img" src="https://i.imgur.com/zO2eZe9.png" alt="AlphaBest Logo" class="w-12 h-12 rounded-full object-cover">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="https://i.imgur.com/zO2eZe9.png" alt="AlphaBest Logo" class="w-12 h-12 rounded-full object-cover">
                     <div>
-                        <h1 class="text-xl font-bold gradient-text" id="brand-name">AlphaBest</h1>
-                        <p class="text-xs text-gray-600" id="brand-sub">Bimbel Terpercaya</p>
+                        <h1 class="text-xl font-bold gradient-text">AlphaBest</h1>
+                        <p class="text-xs text-gray-600">Bimbel Terpercaya</p>
                     </div>
                 </a>
 
                 <nav class="nav-desktop">
-                    <a href="#beranda">Beranda</a>
+                    <a href="index.html#beranda">Beranda</a>
+                    <a href="index.html#tentang">Tentang</a>
                     
                     <div class="dropdown-wrapper" id="program-dropdown-wrapper">
                         <button class="dropdown-trigger" onclick="toggleDropdown('program-dropdown-wrapper')">
@@ -216,8 +189,8 @@
                         </div>
                     </div>
 
-                    <a href="#kontak">Hubungi Kami</a>
-                    <a href="#daftar" class="btn-daftar">Daftar</a>
+                    <a href="index.html#cabang">Cabang</a>
+                    <a href="index.html#kontak">Hubungi</a>
                 </nav>
 
                 <button class="hamburger-btn" onclick="openMobileMenu()" aria-label="Menu">
@@ -227,9 +200,7 @@
         </div>
     </header>
 
-    <!-- ============================================================ -->
-    <!-- MOBILE MENU OVERLAY -->
-    <!-- ============================================================ -->
+    <!-- ===== MOBILE MENU ===== -->
     <div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-btn" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
@@ -239,36 +210,24 @@
             <h2>AlphaBest</h2>
         </div>
 
-        <a href="#beranda" onclick="closeMobileMenu()"><i class="fas fa-home mr-2 text-teal-600"></i> Beranda</a>
-        <a href="#tentang" onclick="closeMobileMenu()"><i class="fas fa-info-circle mr-2 text-teal-600"></i> Tentang Kami</a>
+        <a href="index.html#beranda" onclick="closeMobileMenu()"><i class="fas fa-home mr-2 text-teal-600"></i> Beranda</a>
+        <a href="index.html#tentang" onclick="closeMobileMenu()"><i class="fas fa-info-circle mr-2 text-teal-600"></i> Tentang</a>
 
         <div class="mobile-submenu" id="mobile-program-menu">
             <span class="sub-label"><i class="fas fa-book-open mr-2 text-teal-600"></i> Program</span>
         </div>
 
-        <a href="#cabang" onclick="closeMobileMenu()"><i class="fas fa-map-marker-alt mr-2 text-teal-600"></i> Cabang Kami</a>
-
-        <div class="mobile-submenu" id="mobile-keunggulan-menu">
-            <span class="sub-label"><i class="fas fa-star mr-2 text-teal-600"></i> Keunggulan</span>
-        </div>
-
-        <div class="mobile-submenu" id="mobile-relasi-menu">
-            <span class="sub-label"><i class="fas fa-handshake mr-2 text-teal-600"></i> Bina Relasi</span>
-        </div>
-
-        <a href="#blog" onclick="closeMobileMenu()"><i class="fas fa-newspaper mr-2 text-teal-600"></i> Blog</a>
-        <a href="#sudut-belajar" onclick="closeMobileMenu()"><i class="fas fa-graduation-cap mr-2 text-teal-600"></i> Sudut Belajar</a>
-        <a href="#kontak" onclick="closeMobileMenu()"><i class="fas fa-phone mr-2 text-teal-600"></i> Hubungi Kami</a>
-        <a href="#karier" onclick="closeMobileMenu()"><i class="fas fa-briefcase mr-2 text-teal-600"></i> Karier</a>
-        
-        <a href="#daftar" class="btn-daftar-mobile" onclick="closeMobileMenu()">
-            <i class="fas fa-user-plus mr-2"></i> Daftar Sekarang
-        </a>
+        <a href="index.html#cabang" onclick="closeMobileMenu()"><i class="fas fa-map-marker-alt mr-2 text-teal-600"></i> Cabang</a>
+        <a href="index.html#keunggulan" onclick="closeMobileMenu()"><i class="fas fa-star mr-2 text-teal-600"></i> Keunggulan</a>
+        <a href="index.html#bina-relasi" onclick="closeMobileMenu()"><i class="fas fa-handshake mr-2 text-teal-600"></i> Bina Relasi</a>
+        <a href="blog.html" onclick="closeMobileMenu()"><i class="fas fa-newspaper mr-2 text-teal-600"></i> Blog</a>
+        <a href="sudut-belajar.html" onclick="closeMobileMenu()"><i class="fas fa-graduation-cap mr-2 text-teal-600"></i> Sudut Belajar</a>
+        <a href="pendaftaran.html" onclick="closeMobileMenu()"><i class="fas fa-user-plus mr-2 text-teal-600"></i> Daftar</a>
+        <a href="karier.html" onclick="closeMobileMenu()"><i class="fas fa-briefcase mr-2 text-teal-600"></i> Karier</a>
+        <a href="index.html#kontak" onclick="closeMobileMenu()"><i class="fas fa-phone mr-2 text-teal-600"></i> Hubungi</a>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- HERO SECTION -->
-    <!-- ============================================================ -->
+    <!-- ===== HERO ===== -->
     <section id="beranda" class="pt-24 pb-16 gradient-bg text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
@@ -285,7 +244,7 @@
                         Bimbel terpercaya sejak 2020. Dibimbing oleh pengajar profesional dengan pengalaman puluhan tahun.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#daftar" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-semibold hover:shadow-xl transition text-center">
+                        <a href="pendaftaran.html" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-semibold hover:shadow-xl transition text-center">
                             <i class="fas fa-user-plus mr-2"></i>Daftar Sekarang
                         </a>
                         <a href="https://wa.me/6285117705334" class="glass px-8 py-3 rounded-full font-semibold hover:shadow-xl transition text-center">
@@ -300,9 +259,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- TENTANG KAMI -->
-    <!-- ============================================================ -->
+    <!-- ===== TENTANG ===== -->
     <section id="tentang" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -347,9 +304,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- PROGRAM KAMI -->
-    <!-- ============================================================ -->
+    <!-- ===== PROGRAM ===== -->
     <section id="program" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -357,14 +312,12 @@
                 <p class="text-gray-600 mt-4">Pilihan program belajar untuk semua jenjang</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="program-container">
-                <!-- AKAN DIISI OLEH JAVASCRIPT -->
+                <!-- DIISI JS -->
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- CABANG KAMI -->
-    <!-- ============================================================ -->
+    <!-- ===== CABANG ===== -->
     <section id="cabang" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -372,14 +325,12 @@
                 <p class="text-gray-600 mt-4">Temukan cabang AlphaBest terdekat</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="cabang-container">
-                <!-- AKAN DIISI OLEH JAVASCRIPT -->
+                <!-- DIISI JS -->
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- KEUNGGULAN -->
-    <!-- ============================================================ -->
+    <!-- ===== KEUNGGULAN ===== -->
     <section id="keunggulan" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -387,14 +338,12 @@
                 <p class="text-gray-600 mt-4">Mengapa memilih AlphaBest?</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="keunggulan-container">
-                <!-- AKAN DIISI OLEH JAVASCRIPT -->
+                <!-- DIISI JS -->
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- BINA RELASI -->
-    <!-- ============================================================ -->
+    <!-- ===== BINA RELASI ===== -->
     <section id="bina-relasi" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -402,64 +351,12 @@
                 <p class="text-gray-600 mt-4">Program untuk membangun hubungan dengan orang tua dan siswa</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto" id="relasi-container">
-                <!-- AKAN DIISI OLEH JAVASCRIPT -->
+                <!-- DIISI JS -->
             </div>
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- BLOG - PREVIEW + POPUP LAYOUT MAJALAH -->
-    <!-- ============================================================ -->
-    <section id="blog" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Blog & Artikel</h2>
-                <p class="text-gray-600 mt-4">Tips belajar dan informasi pendidikan</p>
-            </div>
-            <div id="blog-loading" class="loading-spinner">
-                <div class="spinner"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-container">
-                <!-- AKAN DIISI OLEH JAVASCRIPT -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- SUDUT BELAJAR -->
-    <!-- ============================================================ -->
-    <section id="sudut-belajar" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Sudut Belajar</h2>
-                <p class="text-gray-600 mt-4">Video pembelajaran dan modul gratis</p>
-            </div>
-            
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6">Video Pembelajaran</h3>
-                <div id="video-loading" class="loading-spinner">
-                    <div class="spinner"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-container">
-                    <!-- AKAN DIISI OLEH JAVASCRIPT -->
-                </div>
-            </div>
-            
-            <div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-6">Modul Pembelajaran</h3>
-                <div id="modul-loading" class="loading-spinner">
-                    <div class="spinner"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modul-container">
-                    <!-- AKAN DIISI OLEH JAVASCRIPT -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- HUBUNGI KAMI - ICON WHATSAPP FIX PAKE EMOJI FALLBACK -->
-    <!-- ============================================================ -->
+    <!-- ===== KONTAK ===== -->
     <section id="kontak" class="py-16 gradient-bg text-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -467,7 +364,7 @@
                 <p class="mt-4 opacity-90">Kami siap membantu Anda</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" id="kontak-container">
-                <!-- AKAN DIISI OLEH JAVASCRIPT -->
+                <!-- DIISI JS -->
             </div>
             <div class="mt-8 text-center">
                 <div class="flex justify-center space-x-4">
@@ -488,123 +385,7 @@
         </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- PENDAFTARAN - TETAP PAKE EMBED GOOGLE FORM -->
-    <!-- ============================================================ -->
-    <section id="daftar" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Pendaftaran</h2>
-                <p class="text-gray-600 mt-4">Daftarkan diri Anda sekarang</p>
-            </div>
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-gray-50 rounded-2xl shadow-lg p-4 md:p-8">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-inner form-google-iframe">
-                        <iframe 
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSdi8tGwC7Y7qAaIZ-EYVBldPm3J2to9fuyR14OWpHVc-QRgZQ/viewform?embedded=true" 
-                            width="100%" 
-                            height="700" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0"
-                            style="min-height: 600px;"
-                            class="w-full">
-                            Memuat…
-                        </iframe>
-                    </div>
-                    <p class="text-xs text-gray-400 text-center mt-4">
-                        <i class="fas fa-lock mr-1 text-green-500"></i> Data Anda aman dan tidak akan disebarkan
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- KARIER - UDAH TERHUBUNG KE SHEETS -->
-    <!-- ============================================================ -->
-    <section id="karier" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text section-title">Karier</h2>
-                <p class="text-gray-600 mt-4">Bergabung bersama tim AlphaBest</p>
-            </div>
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-lg p-8">
-                    <form id="careerForm" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
-                                <input type="text" id="career_nama" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Email *</label>
-                                <input type="email" id="career_email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">No. Telepon *</label>
-                                <input type="tel" id="career_telepon" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Tanggal Lahir *</label>
-                                <input type="date" id="career_tgl_lahir" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Alamat Lengkap *</label>
-                            <textarea id="career_alamat" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500"></textarea>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Pendidikan Terakhir *</label>
-                                <select id="career_pendidikan" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                                    <option value="">Pilih</option>
-                                    <option value="SMA">SMA/SMK</option>
-                                    <option value="D3">D3</option>
-                                    <option value="S1">S1</option>
-                                    <option value="S2">S2</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-2">Posisi yang Dilamar *</label>
-                                <select id="career_posisi" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                                    <option value="">Pilih Posisi</option>
-                                    <option value="Matematika">Pengajar Matematika</option>
-                                    <option value="Fisika">Pengajar Fisika</option>
-                                    <option value="Kimia">Pengajar Kimia</option>
-                                    <option value="Biologi">Pengajar Biologi</option>
-                                    <option value="B. Inggris">Pengajar Bahasa Inggris</option>
-                                    <option value="B. Indonesia">Pengajar Bahasa Indonesia</option>
-                                    <option value="Geografi">Pengajar Geografi</option>
-                                    <option value="Ekonomi">Pengajar Ekonomi</option>
-                                    <option value="Sejarah">Pengajar Sejarah</option>
-                                    <option value="Sosiologi">Pengajar Sosiologi</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Pengalaman Mengajar</label>
-                            <textarea id="career_pengalaman" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500" placeholder="Ceritakan pengalaman mengajar Anda..."></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-2">Upload CV (PDF)</label>
-                            <input type="file" id="career_cv" accept=".pdf" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-500">
-                        </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transition" id="careerSubmitBtn">
-                            <i class="fas fa-paper-plane mr-2"></i>Kirim Lamaran
-                        </button>
-                        <div id="careerStatus" class="hidden text-center mt-3"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- FOOTER -->
-    <!-- ============================================================ -->
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -612,24 +393,27 @@
                     <div class="flex items-center space-x-3 mb-4">
                         <img src="https://i.imgur.com/zO2eZe9.png" alt="AlphaBest Logo" class="w-12 h-12 rounded-full object-cover">
                         <div>
-                            <h3 class="text-xl font-bold" id="footer-brand">AlphaBest</h3>
-                            <p class="text-sm text-gray-400" id="footer-sub">Bimbel Terpercaya</p>
+                            <h3 class="text-xl font-bold">AlphaBest</h3>
+                            <p class="text-sm text-gray-400">Bimbel Terpercaya</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm" id="footer-tagline">Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.</p>
+                    <p class="text-gray-400 text-sm">Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.</p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4">Menu</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#beranda" class="hover:text-teal-400 transition">Beranda</a></li>
-                        <li><a href="#tentang" class="hover:text-teal-400 transition">Tentang Kami</a></li>
-                        <li><a href="#program" class="hover:text-teal-400 transition">Program</a></li>
-                        <li><a href="#cabang" class="hover:text-teal-400 transition">Cabang</a></li>
+                        <li><a href="index.html#beranda" class="hover:text-teal-400 transition">Beranda</a></li>
+                        <li><a href="index.html#tentang" class="hover:text-teal-400 transition">Tentang</a></li>
+                        <li><a href="index.html#program" class="hover:text-teal-400 transition">Program</a></li>
+                        <li><a href="index.html#cabang" class="hover:text-teal-400 transition">Cabang</a></li>
+                        <li><a href="blog.html" class="hover:text-teal-400 transition">Blog</a></li>
+                        <li><a href="sudut-belajar.html" class="hover:text-teal-400 transition">Sudut Belajar</a></li>
+                        <li><a href="karier.html" class="hover:text-teal-400 transition">Karier</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4">Kontak</h4>
-                    <ul class="space-y-2 text-sm text-gray-400" id="footer-kontak">
+                    <ul class="space-y-2 text-sm text-gray-400">
                         <li><i class="fas fa-phone mr-2"></i>0851-1770-5334</li>
                         <li><i class="fas fa-envelope mr-2"></i>info@alphabest.id</li>
                         <li><i class="fas fa-map-marker-alt mr-2"></i>Tambun, Bekasi</li>
@@ -654,21 +438,17 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-                <p id="footer-copyright">&copy; 2026 AlphaBest Bimbel. All rights reserved.</p>
+                <p>&copy; 2026 AlphaBest Bimbel. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- ============================================================ -->
-    <!-- WHATSAPP FLOAT -->
-    <!-- ============================================================ -->
+    <!-- ===== WHATSAPP FLOAT ===== -->
     <a href="https://wa.me/6285117705334" class="whatsapp-float bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition border-2 border-white/30">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
-    <!-- ============================================================ -->
-    <!-- MODAL -->
-    <!-- ============================================================ -->
+    <!-- ===== MODAL ===== -->
     <div id="modal" class="modal">
         <div class="modal-content p-8 relative">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
@@ -682,22 +462,15 @@
     <!-- SCRIPT -->
     <!-- ============================================================ -->
     <script>
-        // ============================================================
-        // KONFIGURASI - GANTI DENGAN URL WEB APP ANDA
-        // ============================================================
+        // ===== KONFIGURASI =====
         const SHEET_CONFIG = {
-            webAppUrl: 'https://apisite.alphabest-web.workers.dev/',
-            logoUrl: 'https://i.imgur.com/zO2eZe9.png',
+            webAppUrl: 'https://script.google.com/macros/s/AKfycbw0X03VPlnMv_9-OYF2IKB3OJK6qSjzWq2FxTl5ISaDhcBizHNBW2NRRlCOtTXlM73Bvg/exec',
             sheets: {
-                blog: 'blog',
-                video: 'video_pembelajaran',
-                modul: 'modul'
+                cabang: 'cabang'
             }
         };
 
-        // ============================================================
-        // HARDCODE DATA - KONTEN STATIS YANG JARANG BERUBAH
-        // ============================================================
+        // ===== HARDCODE DATA =====
         const HARDCODE_DATA = {
             hero: {
                 judul: 'Pahami Soal Sampai Ke Dasar',
@@ -718,7 +491,7 @@
                     id: 'sd',
                     judul: 'Kelas 4-6 SD',
                     deskripsi: 'Persiapan ujian dan penguatan dasar matematika, IPA, dan bahasa',
-                    gambar: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=250&fit=crop',
+                    gambar: 'https://imgur.com/iclHZEQ',
                     detail: 'Program khusus untuk siswa SD kelas 4-6. Fokus pada pemahaman konsep dasar matematika, IPA, dan Bahasa Indonesia. Dilengkapi dengan latihan soal dan evaluasi berkala.'
                 },
                 {
@@ -748,44 +521,6 @@
                     deskripsi: 'Persiapan maksimal untuk UTBK SNBT',
                     gambar: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop',
                     detail: 'Program persiapan maksimal untuk UTBK SNBT dengan materi lengkap dan try out rutin.'
-                }
-            ],
-            cabang: [
-                {
-                    id: 'tambun',
-                    nama: 'Tambun',
-                    label: 'Cabang Utama',
-                    gambar: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop',
-                    alamat: 'Jl. Raya Tambun No. 123, Tambun, Bekasi',
-                    telepon: '0851-1770-5334',
-                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
-                },
-                {
-                    id: 'alinda',
-                    nama: 'Alinda',
-                    label: 'Cabang Baru',
-                    gambar: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop',
-                    alamat: 'Jl. Alinda Raya No. 45, Bekasi',
-                    telepon: '0851-1770-5334',
-                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
-                },
-                {
-                    id: 'bekasi',
-                    nama: 'Bekasi Timur Regency',
-                    label: 'Cabang Premium',
-                    gambar: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop',
-                    alamat: 'Bekasi Timur Regency Blok A No. 7, Bekasi',
-                    telepon: '0851-1770-5334',
-                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
-                },
-                {
-                    id: 'rawa',
-                    nama: 'Rawa Lumbu',
-                    label: 'Cabang Terbaru',
-                    gambar: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop',
-                    alamat: 'Jl. Rawa Lumbu No. 78, Bekasi',
-                    telepon: '0851-1770-5334',
-                    jam_operasional: 'Senin - Sabtu, 08:00 - 20:00'
                 }
             ],
             keunggulan: [
@@ -871,18 +606,10 @@
                     detail: 'info@alphabest.id',
                     icon: 'fa-envelope'
                 }
-            ],
-            footer: {
-                judul: 'AlphaBest',
-                deskripsi: 'Bimbel Terpercaya',
-                tagline: 'Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.',
-                tahun: '2026'
-            }
+            ]
         };
 
-        // ============================================================
-        // MOBILE MENU
-        // ============================================================
+        // ===== MOBILE MENU =====
         function openMobileMenu() {
             document.getElementById('mobileMenu').classList.add('open');
             document.getElementById('mobileOverlay').classList.add('active');
@@ -895,19 +622,13 @@
             document.body.style.overflow = 'auto';
         }
 
-        // ============================================================
-        // TOGGLE DROPDOWN - Klik untuk buka/tutup
-        // ============================================================
+        // ===== DROPDOWN =====
         function toggleDropdown(wrapperId) {
             const wrapper = document.getElementById(wrapperId);
             if (!wrapper) return;
-            
             document.querySelectorAll('.dropdown-wrapper').forEach(w => {
-                if (w.id !== wrapperId) {
-                    w.classList.remove('active');
-                }
+                if (w.id !== wrapperId) w.classList.remove('active');
             });
-            
             wrapper.classList.toggle('active');
         }
 
@@ -919,9 +640,7 @@
             }
         });
 
-        // ============================================================
-        // AMBIL DATA DARI GOOGLE SHEETS (HANYA UNTUK KONTEN DINAMIS)
-        // ============================================================
+        // ===== FETCH SHEET =====
         async function fetchSheetData(sheetName) {
             try {
                 const url = `${SHEET_CONFIG.webAppUrl}?sheet=${sheetName}`;
@@ -934,31 +653,7 @@
             }
         }
 
-        function getValueByKey(data, key) {
-            if (!data) return null;
-            const item = data.find(d => d.key === key);
-            return item ? item.value : null;
-        }
-
-        // ============================================================
-        // RENDER FUNCTIONS - KONTEN STATIS (HARDCODE)
-        // ============================================================
-
-        function renderHeader(data) {
-            if (!data) return;
-            const brand = data.judul || 'AlphaBest';
-            const sub = data.deskripsi || 'Bimbel Terpercaya';
-            const tagline = data.tagline || 'Pahami Soal Sampai Ke Dasar. Bimbel berkualitas sejak 2020.';
-            const tahun = data.tahun || '2026';
-            
-            document.getElementById('brand-name').textContent = brand;
-            document.getElementById('footer-brand').textContent = brand;
-            document.getElementById('brand-sub').textContent = sub;
-            document.getElementById('footer-sub').textContent = sub;
-            document.getElementById('footer-tagline').textContent = tagline;
-            document.getElementById('footer-copyright').textContent = `© ${tahun} AlphaBest Bimbel. All rights reserved.`;
-        }
-
+        // ===== RENDER FUNCTIONS =====
         function renderHero(data) {
             if (!data) return;
             const titleEl = document.getElementById('hero-title');
@@ -966,21 +661,18 @@
             const parts = judul.split(' ');
             const lastWord = parts.pop();
             titleEl.innerHTML = parts.join(' ') + ' <span class="text-yellow-300">' + lastWord + '</span>';
-            
-            document.getElementById('hero-subtitle').textContent = data.sub_judul || 'Bimbel terpercaya sejak 2020. Dibimbing oleh pengajar profesional dengan pengalaman puluhan tahun.';
-            document.getElementById('hero-image').src = data.gambar || 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop';
+            document.getElementById('hero-subtitle').textContent = data.sub_judul || '';
+            document.getElementById('hero-image').src = data.gambar || '';
         }
 
         function renderTentang(data) {
             if (!data) return;
-            document.getElementById('tentang-judul').textContent = data.judul || 'Bimbel AlphaBest';
-            document.getElementById('tentang-deskripsi').textContent = data.deskripsi || 'Berdiri sejak tahun 2020 di Tambun, AlphaBest memulai kegiatannya sebagai bimbel rumahan.';
-            document.getElementById('tentang-image').src = data.gambar || 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=400&fit=crop';
-            
+            document.getElementById('tentang-judul').textContent = data.judul || '';
+            document.getElementById('tentang-deskripsi').textContent = data.deskripsi || '';
+            document.getElementById('tentang-image').src = data.gambar || '';
             document.getElementById('stat-cabang').textContent = data.cabang || '4+';
             document.getElementById('stat-siswa').textContent = data.siswa || '500+';
             document.getElementById('stat-pengajar').textContent = data.pengajar || '20+';
-            
             if (data.tahun) {
                 const tahunNum = parseInt(data.tahun);
                 const sekarang = new Date().getFullYear();
@@ -991,7 +683,6 @@
         function renderProgram(data) {
             const container = document.getElementById('program-container');
             if (!data || data.length === 0 || !container) return;
-            
             container.innerHTML = '';
             data.forEach(program => {
                 const card = document.createElement('div');
@@ -1009,7 +700,6 @@
                 container.appendChild(card);
             });
             
-            // Update desktop dropdown
             const desktopDropdown = document.getElementById('desktop-program-dropdown');
             if (desktopDropdown) {
                 desktopDropdown.innerHTML = '';
@@ -1022,7 +712,6 @@
                 });
             }
 
-            // Update mobile menu
             const mobileMenu = document.getElementById('mobile-program-menu');
             if (mobileMenu) {
                 const label = mobileMenu.querySelector('.sub-label');
@@ -1041,7 +730,6 @@
         function renderCabang(data) {
             const container = document.getElementById('cabang-container');
             if (!data || data.length === 0 || !container) return;
-            
             container.innerHTML = '';
             data.forEach(cabang => {
                 const card = document.createElement('div');
@@ -1062,7 +750,6 @@
         function renderKeunggulan(data) {
             const container = document.getElementById('keunggulan-container');
             if (!data || data.length === 0 || !container) return;
-            
             container.innerHTML = '';
             data.forEach(item => {
                 const card = document.createElement('div');
@@ -1078,7 +765,6 @@
                 container.appendChild(card);
             });
 
-            // Update mobile menu
             const mobileMenu = document.getElementById('mobile-keunggulan-menu');
             if (mobileMenu) {
                 const label = mobileMenu.querySelector('.sub-label');
@@ -1097,7 +783,6 @@
         function renderRelasi(data) {
             const container = document.getElementById('relasi-container');
             if (!data || data.length === 0 || !container) return;
-            
             container.innerHTML = '';
             data.forEach(item => {
                 const card = document.createElement('div');
@@ -1114,7 +799,6 @@
                 container.appendChild(card);
             });
 
-            // Update mobile menu
             const mobileMenu = document.getElementById('mobile-relasi-menu');
             if (mobileMenu) {
                 const label = mobileMenu.querySelector('.sub-label');
@@ -1133,18 +817,16 @@
         function renderKontak(data) {
             const container = document.getElementById('kontak-container');
             if (!data || data.length === 0 || !container) return;
-            
             container.innerHTML = '';
             data.forEach(item => {
                 const isWA = item.judul === 'WhatsApp';
                 const card = document.createElement('div');
                 card.className = `glass rounded-2xl p-6 text-center contact-card ${isWA ? 'bg-[#25D366]/20 backdrop-blur-sm border border-white/10' : ''}`;
-                
                 let iconHtml = '';
                 if (isWA) {
                     iconHtml = `
                         <div class="w-16 h-16 wa-icon-wrapper rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 shadow-lg hover:shadow-2xl">
-                            <i class="fab fa-whatsapp text-white text-3xl" id="waIcon"></i>
+                            <i class="fab fa-whatsapp text-white text-3xl"></i>
                         </div>
                     `;
                 } else {
@@ -1154,7 +836,6 @@
                         </div>
                     `;
                 }
-                
                 let actionHtml = '';
                 if (isWA) {
                     actionHtml = `
@@ -1164,7 +845,6 @@
                         </a>
                     `;
                 }
-                
                 card.innerHTML = `
                     ${iconHtml}
                     <h3 class="text-xl font-bold mb-2">${item.judul}</h3>
@@ -1175,237 +855,8 @@
             });
         }
 
-        // ============================================================
-        // RENDER FUNCTIONS - KONTEN DINAMIS (DARI GOOGLE SHEETS)
-        // ============================================================
-
-        function renderBlog(data) {
-            const container = document.getElementById('blog-container');
-            const loading = document.getElementById('blog-loading');
-            
-            if (loading) loading.style.display = 'none';
-            if (!container) return;
-            
-            if (!data || data.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-8 text-gray-500">
-                        <i class="fas fa-newspaper text-4xl mb-3 text-gray-300"></i>
-                        <p>Belum ada artikel. Cek lagi nanti ya!</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = '';
-            data.forEach(article => {
-                const fullText = article.deskripsi || '';
-                const words = fullText.split(' ');
-                const previewWords = words.slice(0, 30);
-                const previewText = previewWords.join(' ') + (words.length > 30 ? '...' : '');
-                
-                const card = document.createElement('article');
-                card.className = 'bg-white rounded-2xl shadow-lg overflow-hidden hover-lift';
-                card.innerHTML = `
-                    <img src="${article.gambar || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=250&fit=crop'}" 
-                         alt="${article.judul}" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="text-sm text-teal-600 mb-2">${article.tanggal || ''}</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">${article.judul}</h3>
-                        <p class="text-gray-600 text-sm mb-4 blog-preview">${previewText}</p>
-                        <button onclick="showArticleModal('${article.id}')" 
-                                class="text-teal-600 font-medium hover:text-teal-800 transition">
-                            Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function renderVideo(data) {
-            const container = document.getElementById('video-container');
-            const loading = document.getElementById('video-loading');
-            
-            if (loading) loading.style.display = 'none';
-            if (!container) return;
-            
-            if (!data || data.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-8 text-gray-500">
-                        <i class="fas fa-video text-4xl mb-3 text-gray-300"></i>
-                        <p>Belum ada video. Cek lagi nanti ya!</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = '';
-            data.forEach(video => {
-                const isPremium = video.is_premium === 'true' || video.is_premium === true;
-                const linkVideo = video.link_video || '#';
-                const card = document.createElement('div');
-                card.className = 'bg-gray-50 rounded-2xl shadow-lg overflow-hidden' + (isPremium ? ' relative' : '');
-                
-                let premiumBadge = '';
-                let overlayContent = '';
-                let actionButton = '';
-                
-                if (isPremium) {
-                    premiumBadge = `<div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold z-10">
-                        <i class="fas fa-crown mr-1"></i>PREMIUM
-                    </div>`;
-                    
-                    overlayContent = `
-                        <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center z-20">
-                            <i class="fas fa-lock text-white text-4xl mb-3"></i>
-                            <p class="text-white text-sm font-medium mb-3">Konten Premium</p>
-                            <button onclick="showPremiumAlert('${video.judul}')" 
-                                    class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-green-600 transition flex items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> Hubungi WA
-                            </button>
-                        </div>
-                    `;
-                    
-                    actionButton = `
-                        <button onclick="showPremiumAlert('${video.judul}')" 
-                                class="mt-3 w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition text-sm flex items-center justify-center gap-2">
-                            <i class="fab fa-whatsapp"></i> Hubungi WA untuk Akses
-                        </button>
-                    `;
-                } else {
-                    overlayContent = `
-                        <a href="${linkVideo}" target="_blank" class="absolute inset-0 flex items-center justify-center z-20 group">
-                            <div class="w-16 h-16 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/50 transition">
-                                <i class="fas fa-play text-white text-2xl ml-1"></i>
-                            </div>
-                        </a>
-                        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-                    `;
-                    
-                    actionButton = `
-                        <a href="${linkVideo}" target="_blank" 
-                           class="mt-3 w-full bg-teal-600 text-white py-2 rounded-lg font-semibold hover:bg-teal-700 transition text-sm block text-center">
-                            <i class="fas fa-play mr-1"></i> Tonton Gratis
-                        </a>
-                    `;
-                }
-                
-                card.innerHTML = `
-                    ${premiumBadge}
-                    <div class="relative">
-                        <img src="${video.gambar || 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=250&fit=crop'}" 
-                             alt="${video.judul}" class="w-full h-48 object-cover">
-                        ${overlayContent}
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-gray-800 mb-2">${video.judul}</h4>
-                        <p class="text-sm ${isPremium ? 'text-yellow-600 font-medium' : 'text-gray-600'}">
-                            ${isPremium ? '🔒 Premium' : '🎬 Gratis'}
-                        </p>
-                        ${actionButton}
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function renderModul(data) {
-            const container = document.getElementById('modul-container');
-            const loading = document.getElementById('modul-loading');
-            
-            if (loading) loading.style.display = 'none';
-            if (!container) return;
-            
-            if (!data || data.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-8 text-gray-500">
-                        <i class="fas fa-file-pdf text-4xl mb-3 text-gray-300"></i>
-                        <p>Belum ada modul. Cek lagi nanti ya!</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            container.innerHTML = '';
-            data.forEach(modul => {
-                const isPremium = modul.is_premium === 'true' || modul.is_premium === true;
-                const card = document.createElement('div');
-                card.className = 'bg-gray-50 rounded-2xl shadow-lg p-6' + (isPremium ? ' relative' : '');
-                let premiumBadge = '', buttonHtml = '';
-                if (isPremium) {
-                    premiumBadge = `<div class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
-                        <i class="fas fa-lock mr-1"></i>PREMIUM</div>`;
-                    buttonHtml = `<button class="w-full bg-gray-400 text-white py-2 rounded-lg cursor-not-allowed">
-                        <i class="fas fa-lock mr-2"></i>Khusus Member</button>`;
-                } else {
-                    buttonHtml = `<button class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition">
-                        <i class="fas fa-download mr-2"></i>Download</button>`;
-                }
-                card.innerHTML = `
-                    ${premiumBadge}
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-file-pdf text-red-500 text-3xl mr-3"></i>
-                        <div>
-                            <h4 class="font-bold text-gray-800">${modul.judul}</h4>
-                            <p class="text-sm text-gray-600">${modul.deskripsi || ''}</p>
-                        </div>
-                    </div>
-                    ${buttonHtml}
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // ============================================================
-        // FUNGSI MODAL ARTIKEL - LAYOUT MAJALAH
-        // ============================================================
+        // ===== MODAL FUNCTIONS =====
         let dataCache = {};
-
-        function showArticleModal(id) {
-            const data = dataCache.blog || [];
-            const article = data.find(a => a.id == id);
-            if (!article) {
-                showModal(`<p class="text-gray-600">Artikel tidak ditemukan</p>`);
-                return;
-            }
-            
-            const fullText = article.deskripsi || '';
-            const paragraphs = fullText.split('\n').filter(p => p.trim() !== '');
-            
-            let contentHtml = '';
-            paragraphs.forEach(p => {
-                contentHtml += `<p class="text-gray-700 mb-3 leading-relaxed">${p}</p>`;
-            });
-            
-            showModal(`
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="md:w-2/5">
-                        <img src="${article.gambar || 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop'}" 
-                             alt="${article.judul}" 
-                             class="w-full rounded-xl object-cover aspect-[4/3]">
-                        <div class="mt-3 text-sm text-gray-500">
-                            <i class="far fa-calendar-alt mr-1"></i> ${article.tanggal || ''}
-                        </div>
-                    </div>
-                    <div class="md:w-3/5">
-                        <h2 class="text-2xl font-bold gradient-text mb-3">${article.judul}</h2>
-                        <div class="prose prose-sm max-w-none text-gray-700">
-                            ${contentHtml}
-                        </div>
-                    </div>
-                </div>
-            `);
-        }
-
-        function showPremiumAlert(judul) {
-            const noWA = '6285117705334';
-            const pesan = `Halo AlphaBest! Saya ingin mengakses video premium: *${judul}*. Bagaimana cara mendapatkannya?`;
-            window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`, '_blank');
-        }
-
-        // ============================================================
-        // MODAL FUNCTIONS
-        // ============================================================
 
         function showModal(content) {
             document.getElementById('modal-body').innerHTML = content;
@@ -1432,14 +883,16 @@
                          class="w-full rounded-lg mb-4">
                     <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
                 `);
-            } else {
-                showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
             }
         }
 
         function showCabangModal(id) {
-            const data = HARDCODE_DATA.cabang || [];
-            const item = data.find(c => c.id === id);
+            let data = dataCache.cabang || [];
+            let item = data.find(c => c.id == id);
+            if (!item) {
+                data = HARDCODE_DATA.cabang || [];
+                item = data.find(c => c.id === id);
+            }
             if (item) {
                 showModal(`
                     <h2 class="text-2xl font-bold gradient-text mb-4">${item.nama}</h2>
@@ -1460,8 +913,6 @@
                         </div>
                     </div>
                 `);
-            } else {
-                showModal(`<p class="text-gray-600">Data cabang tidak ditemukan</p>`);
             }
         }
 
@@ -1476,8 +927,6 @@
                     </div>
                     <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
                 `);
-            } else {
-                showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
             }
         }
 
@@ -1491,138 +940,33 @@
                          class="w-full rounded-lg mb-4">
                     <div class="text-gray-600">${item.detail || item.deskripsi || ''}</div>
                 `);
-            } else {
-                showModal(`<p class="text-gray-600">Data tidak ditemukan</p>`);
             }
         }
 
-        // ============================================================
-        // CAREER FORM - KIRIM KE GOOGLE SHEETS
-        // ============================================================
-        document.getElementById('careerForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const btn = document.getElementById('careerSubmitBtn');
-            const statusDiv = document.getElementById('careerStatus');
-            
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Mengirim...';
-            statusDiv.classList.add('hidden');
-            
-            const formData = {
-                nama_lengkap: document.getElementById('career_nama').value.trim(),
-                email: document.getElementById('career_email').value.trim(),
-                telepon: document.getElementById('career_telepon').value.trim(),
-                tanggal_lahir: document.getElementById('career_tgl_lahir').value,
-                alamat: document.getElementById('career_alamat').value.trim(),
-                pendidikan: document.getElementById('career_pendidikan').value,
-                posisi: document.getElementById('career_posisi').value,
-                pengalaman: document.getElementById('career_pengalaman').value.trim(),
-                cv_link: document.getElementById('career_cv').files[0] ? document.getElementById('career_cv').files[0].name : ''
-            };
-            
-            try {
-                await fetch(SHEET_CONFIG.webAppUrl, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                
-                statusDiv.className = 'mt-4 p-4 rounded-lg bg-green-100 text-green-700';
-                statusDiv.innerHTML = '✅ Lamaran berhasil dikirim! Tim kami akan menghubungi Anda segera.';
-                statusDiv.classList.remove('hidden');
-                this.reset();
-                
-            } catch (error) {
-                console.error('Error:', error);
-                statusDiv.className = 'mt-4 p-4 rounded-lg bg-red-100 text-red-700';
-                statusDiv.innerHTML = '❌ Gagal mengirim lamaran. Silakan coba lagi atau hubungi kami langsung via WhatsApp.';
-                statusDiv.classList.remove('hidden');
-            }
-            
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Kirim Lamaran';
-        });
-
-        // ============================================================
-        // FIX WHATSAPP ICON - FALLBACK PAKE EMOJI KALO ICON GAK LOAD
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const waIcon = document.getElementById('waIcon');
-                if (waIcon) {
-                    const computedStyle = window.getComputedStyle(waIcon, '::before');
-                    const content = computedStyle.getPropertyValue('content');
-                    if (!content || content === '""' || content === 'none') {
-                        waIcon.className = '';
-                        waIcon.textContent = '💬';
-                        waIcon.style.fontSize = '2rem';
-                        waIcon.style.fontStyle = 'normal';
-                    }
-                }
-            }, 1500);
-        });
-
-        // ============================================================
-        // LOAD DATA - STRATEGI HYBRID
-        // ============================================================
-        async function loadAllData() {
-            console.log('🚀 Memuat data dengan strategi Hybrid (Hardcode + Dinamis)...');
-            
-            // ===== FASE 1: INSTANT - RENDER SEMUA HARDCODE =====
-            console.log('📦 Fase 1: Render hardcode (instant)...');
-            
-            renderHeader(HARDCODE_DATA.footer);
+        // ===== LOAD DATA =====
+        async function loadData() {
             renderHero(HARDCODE_DATA.hero);
             renderTentang(HARDCODE_DATA.tentang);
             renderProgram(HARDCODE_DATA.program);
-            renderCabang(HARDCODE_DATA.cabang);
             renderKeunggulan(HARDCODE_DATA.keunggulan);
             renderRelasi(HARDCODE_DATA.relasi);
             renderKontak(HARDCODE_DATA.kontak);
-            
-            console.log('✅ Hardcode selesai! Web langsung muncul.');
-            
-            // ===== FASE 2: BACKGROUND - LOAD KONTEN DINAMIS =====
-            console.log('🔄 Fase 2: Load konten dinamis dari Google Sheets...');
-            
+
             try {
-                const [blog, video, modul] = await Promise.all([
-                    fetchSheetData(SHEET_CONFIG.sheets.blog),
-                    fetchSheetData(SHEET_CONFIG.sheets.video),
-                    fetchSheetData(SHEET_CONFIG.sheets.modul)
-                ]);
-                
-                // Simpan di cache untuk modal
-                dataCache.blog = blog;
-                dataCache.video = video;
-                dataCache.modul = modul;
-                
-                // Render konten dinamis
-                renderBlog(blog);
-                renderVideo(video);
-                renderModul(modul);
-                
-                console.log('✅ Data dinamis berhasil dimuat!');
-                console.log(`📊 Statistik: Blog=${blog?.length || 0}, Video=${video?.length || 0}, Modul=${modul?.length || 0}`);
-                
+                const cabang = await fetchSheetData(SHEET_CONFIG.sheets.cabang);
+                dataCache.cabang = cabang;
+                if (cabang && cabang.length > 0) {
+                    renderCabang(cabang);
+                } else {
+                    renderCabang(HARDCODE_DATA.cabang);
+                }
             } catch (error) {
-                console.warn('⚠️ Gagal load data dinamis, menggunakan fallback kosong:', error);
-                
-                // Tampilkan pesan kosong dengan loading state hilang
-                renderBlog([]);
-                renderVideo([]);
-                renderModul([]);
+                console.warn('Gagal load cabang:', error);
+                renderCabang(HARDCODE_DATA.cabang);
             }
-            
-            console.log('🎉 Semua data selesai dimuat!');
         }
 
-        // ============================================================
-        // INIT
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', loadAllData);
+        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
